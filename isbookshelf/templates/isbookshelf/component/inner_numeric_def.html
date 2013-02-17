@@ -1,0 +1,19 @@
+<div class="add_book_form numer">
+		<!-- <form action='/isreport/upload_numeric' method='POST'> -->
+		<p><span id="images_preview"><img id="num_prev" alt="numeric" src="http://chart.apis.google.com/chart?cht=tx&chs=1x0&chl=a%2Bb"/></span></p>
+		<img src="{{MEDIA_URL}}/img/loading.gif" alt="loading" id="loading" style="display: none"/>
+		<p>数式：<input type='text' name='numeric' id="numeric" onKeyup="setNumeric()" value="a+b">
+			<input type='submit' name='submit' value="作成" onClick='post_numeric("{{entry.id}}")'></p>
+						<!-- <input type='hidden' name='entryid' value="{{entry.id}}"> -->
+		<ul>
+		{% for file in file_list %}
+		{% ifequal file '.svn' %}
+		{% else %}
+		<li>
+		<img src="{{image_url}}{{file}}" alt="thumbnail" height="30"></img><p class="imges">{{file}}　<p><input type="submit" value="式貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","")'><input type="submit" value="文中貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","True")'><input type="submit" value="削除" onClick='delete_img("{{file}}","{{entry.id}}")'></p></p>
+		</li>
+		{% endifequal %}
+		{% endfor %}
+		</li>
+</div>
+<div class="frame_submit"><input type="submit" value="閉じる" onClick="book_form_cancel()"></div>

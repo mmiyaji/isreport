@@ -1,0 +1,29 @@
+<div class="movable_content">
+	<h4>My Book登録</h4>
+	<ul>
+		<li>
+			<div>
+				<p>{{target.title}}</p>
+				<p>{% for author in target.authors %}{{author.name}}{% if not forloop.last %}， {% endif %}{% endfor %}</p>
+			</div>
+		</li>
+		<form id="form" name="form" method="post" action="/isreport/ajax/book">
+		<li>
+			【登録先のBook】
+		</li>
+		<li class="book_form_sel">
+			<select id="select_form_book" name="book_id" onChange="book_form_change()">
+				<option value="0">My Favorite</option>
+				{% for book in appuser.get_books %}
+				<option value="{{book.id}}">{{book.title}}</option>
+				{% endfor %}
+				<option value="-1">新しくBookを作る</option>
+			</select>	
+		</li>
+		<li>
+			<input type="hidden" name="target_id" value="{{target.id}}" />
+			<input type="submit" id="set_subs" value="登録"/><input type="reset" id="set_subs" value="キャンセル" onClick="book_form_cancel()"/>
+		</li>
+		{% csrf_token %}</form>
+	</ul>
+</div>

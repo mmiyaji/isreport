@@ -1,0 +1,88 @@
+<div class="content_section">
+  <h3>サイト内検索</h3>
+  <div class="marg15">
+    <!-- <form action="http://is.doshisha.ac.jp/isreport/search_result" id="cse-search-box"> -->
+    <!--   <input type="hidden" name="cx" value="partner-pub-0600889375680677:lnmmq9-2fkt" /> -->
+    <!--   <input type="hidden" name="cof" value="FORID:11" /> -->
+    <!--   <input type="hidden" name="ie" value="UTF-8" /> -->
+    <!--   <input type="text" name="q" size="15" class="google_seach"/> -->
+    <!--   <input type="submit" name="sa" value="&#x691c;&#x7d22;" class="google_seach"/> -->
+    <!-- {% csrf_token %}</form> -->
+    <script>
+  (function() {
+    var cx = 'partner-pub-0600889375680677:lnmmq9-2fkt';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+        '//www.google.co.jp/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+    <!-- <script type="text/javascript" src="http://www.google.co.jp/cse/brand?form=cse-search-box&amp;lang=ja"></script> -->
+    <a href="/isreport/search/" class="more">&gt;&gt; 詳細検索</a>
+  </div>
+</div>
+<div class="content_section">
+  <h3>コンテンツ</h3>
+  <ul>
+    <li {%ifequal target "new"%}class="sel_side"{%endifequal%}><a href="/isreport/entry/">最新ISレポート</a></li>
+    <li {%ifequal target "group"%}class="sel_side"{%endifequal%}><a href="/isreport/group/">研究グループ別</a></li>
+    <li {%ifequal target "author"%}class="sel_side"{%endifequal%}><a href="/isreport/author/?active=true">著者紹介（所属別）</a></li>
+    <!-- <li {%ifequal target "year"%}class="sel_side"{%endifequal%}><a href="/isreport/category?target=year">年度別</a></li> -->
+    <li {%ifequal target "list"%}class="sel_side"{%endifequal%}><a href="/isreport/author/">著者紹介（在籍年度別）</a></li>
+    <li {%ifequal target "tag"%}class="sel_side"{%endifequal%}><a href="/isreport/tag/">タグ一覧</a></li>
+    {# <li {%ifequal target "gallery"%}class="sel_side"{%endifequal%}><a href="/isreport/gallery">Epub Gallery</a></li> #}
+  </ul>
+</div>
+<div class="content_section">
+  <h3>その他</h3>
+  <ul>
+    <li {%ifequal target "home"%}class="sel_side"{%endifequal%}><a href="/isreport/">トップページ / Home</a></li>
+    <li {%ifequal target "search"%}class="sel_side"{%endifequal%}><a href="/isreport/search/">レポート検索 / Search</a></li>
+    {% if not user.is_anonymous %}
+    <li {%ifequal target "download"%}class="sel_side"{%endifequal%}><a href="/isreport/epub">ダウンロード / Download</a></li>
+    <li {%ifequal target "upload"%}class="sel_side"{%endifequal%}><a href="/isreport/upload_form">新規レポート作成 / Upload</a></li>
+    <li {%ifequal target "dashboard"%}class="sel_side"{%endifequal%}><a href="/isreport/dashboard">ダッシュボード / Dashboard</a></li>
+    <li {%ifequal target "approval"%}class="sel_side"{%endifequal%}><a href="/isreport/approval">承認待ちレポート{%if appuser.approval_coount%}（{{appuser.approval_coount}}）{%endif%} / Approval</a></li>
+    {% if user.is_staff %}
+    <li {%ifequal target "admin"%}class="sel_side"{%endifequal%}><a href="/isreport/admin/" target="_blank">管理者用ページ / Admin</a></li>
+    {% endif %}
+    <li ><a href="/report/private/accesslog" target="_blank">アクセスログ / Log</a></li>
+    <li {%ifequal target "setting"%}class="sel_side"{%endifequal%}><a href="/isreport/setting">個人設定 / Setting</a></li>
+    {% endif %}
+    <li {%ifequal target "link"%}class="sel_side"{%endifequal%}><a href="/isreport/link">外部リンク / Link</a></li>
+    <li {%ifequal target "help"%}class="sel_side"{%endifequal%}><a href="/isreport/help" target="_blank">ヘルプ / Help</a></li>
+    <li {%ifequal target "renew"%}class="sel_side"{%endifequal%}><a href="/isreport/renew">お知らせ / News</a></li>
+    <li {%ifequal target "contact"%}class="sel_side"{%endifequal%}><a href="/isreport/contact">連絡先 / Contact</a></li>
+    <li {%ifequal target "rss"%}class="sel_side"{%endifequal%}><a href="/isreport/rss" target="_blank">RSSフィード / RSS</a></li>
+    {% if not user.is_anonymous %}
+    <li {%ifequal target "logout"%}class="sel_side"{%endifequal%}><a href="/isreport/logout">ログアウト【{{user}}】 / Logout</a></li>
+    {% else %}
+    <li {%ifequal target "login"%}class="sel_side"{%endifequal%}><a href="/isreport/login">ログイン / Login</a></li>
+    {% endif %}
+  </ul>
+</div>
+{% if ranking %}
+<div class="content_section">
+  <h3>人気レポート</h3>
+  <ul>
+    {% for item in ranking %}<li><a href="/isreport/entry/{{item.id}}">{{item.title}} :{{item.count}} PV/月</a></li>
+    {% endfor %}
+  </ul>
+</div>{% endif %}
+<div class="content_section">
+  <h3>記事アーカイブ</h3>
+  <ul>
+    <li {%ifequal target "year"%}{%ifequal year "2012"%}class="sel_side"{%endifequal%}{%endifequal%}><h4><a href="/isreport/year/2012">2012年度 IS Report</a></h4></li>
+    <li {%ifequal target "year"%}{%ifequal year "2011"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2010">2011年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2010"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2010">2010年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2009"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2009">2009年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2008"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2008">2008年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2007"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2007">2007年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2006"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2006">2006年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2005"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2005">2005年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2004"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2004">2004年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2003"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2003">2003年度 IS Report</a></li>
+    <li {%ifequal target "year"%}{%ifequal year "2002"%}class="sel_side"{%endifequal%}{%endifequal%}><a href="/isreport/year/2002">2002年度 IS Report</a></li>
+  </ul>
+</div>

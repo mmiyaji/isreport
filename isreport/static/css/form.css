@@ -1,0 +1,55 @@
+/*
+ form
+*/
+input,textarea,select,iframe{
+	background: white;
+	background: rgba(255, 255, 255, 0.7);
+	border: 1px solid #CCC;
+	padding:3px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	font-size: 100%;
+}
+textarea.flexarea{
+	width:98%;
+	margin-top:2px;
+	min-width:400px;
+	min-height:500px;
+	clear:both;
+}
+/*.full_editor textarea.flexarea{
+	min-height:700px;
+	height:100%;
+}*/
+
+input[type="text"],input[type="password"],select,textarea{
+	min-width:450px;
+	width: 70%;
+	padding: 5px;
+}
+input[type="text"].google_seach{
+	min-width:150px;
+	width:150px;
+}
+div.gsc-control-cse{
+    padding: 0px;
+    border: none;
+}
+div.gsc-control-cse input[type="text"]{
+	min-width:130px;
+    width:130px;
+}
+input[type="text"].mini{
+	min-width:130px;
+	width:130px;
+}
+input[type="reset"]{
+	margin:0 10px;
+}
+input[type="submit"],input[type="reset"]{
+	padding:5px;
+}
+input[type="submit"]:hover,input[type="reset"]:hover{
+	border-color:navy;
+}

@@ -1,0 +1,20 @@
+[
+	{% for node in nodes %}{% if node.edges %}{
+	"adjacencies": [
+		{% for edge in node.edges %}{
+			"nodeTo": "{{edge.name}}_{{edge.id}}", 
+			"nodeFrom": "{{node.name}}_{{node.id}}", 
+			"data": {}
+		}{% if not forloop.last %},{% endif %}{% endfor %}
+		],
+		"data": {
+			"$color": "#C74243",
+			"$type": {% if node.color %}{{node.color}}{% else %}"circle"{% endif %}
+		},
+		"label": {
+			"$color": "#111"
+		},
+		"id": "{{node.name}}_{{node.id}}",
+		"name": "{{node.name}}_{{node.id}}"
+	}{% if not forloop.last %},{% endif %}{% endif %}{% endfor %}
+]

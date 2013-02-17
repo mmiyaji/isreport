@@ -1,0 +1,13 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>未認証レポート {% if user.is_staff %}<a href="/isreport/approval?isdraft=true">[下書きのレポートも表示]</a>{% endif %}</h2>
+	<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}
+			{# {% if pages.pre_page %}<a href="/isreport/{%if target_url%}{{target_url}}?{%else%}category?target={{target}}{%endif%}{%if year%}&amp;year={{year}}{%endif%}&amp;page={{pages.pre_page}}">&lt;&lt;Prev</a> {% endif %}{% if pages.max %}全 {{pages.max}}件中 {{pages.start}}~{{pages.end}}件目を表示{% endif %} {% if pages.next_page %}<a href="/isreport/{%if target_url%}{{target_url}}?{%else%}category?target={{target}}{%endif%}{%if year%}&amp;year={{year}}{%endif%}&amp;page={{pages.next_page}}">Next&gt;&gt;</a>{%endif%} #}
+		</div>
+		{% for item in items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% endblock main %}

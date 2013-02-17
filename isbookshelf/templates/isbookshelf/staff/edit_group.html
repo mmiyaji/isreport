@@ -1,0 +1,18 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>管理者 / グループ編集</h2>
+		<div class="marg15">
+			<h3><a href="/isreport/group/{{group.name|iriencode}}">{{group.name}}</a></h3>
+			<div class="marg15">
+				<form id="form" name="form" method="post" action="/isreport/edit_group">
+					<dl class="list">
+						{% include "isbookshelf/component/edit_group_short.html" %}
+						<dd><input type="hidden" name="target" value="{{group.id}}"/>
+						<input type="submit" value="変更する"/></dd></dd>
+					</dl>
+				{% csrf_token %}</form>
+			</div>
+		</div>
+</div>
+{% endblock main %}

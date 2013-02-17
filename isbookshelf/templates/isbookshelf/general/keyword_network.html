@@ -1,0 +1,76 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>タグ（キーワード）説明</h2>
+	<div class="marg15">
+		<div class="marg15 hovs">
+			<h3><a>{{tag.name}}</a><span class="utility">{% if user.is_staff %}[{{tag.view_level}}] <a class="action edits" id="keyword_{{item.id}}" title="編集する" href="/isreport/edit_keyword?target={{tag.id}}">編集</a></span>{%endif%}</h3>
+			<dl class="list">
+				<dt>{{tag.name}} とは</dt>
+				<dd><pre class="description">{{tag.description|default:"N/A"}}</pre></dd>
+			</dl>
+		</div>
+		<div id="container">
+			<div id="center-container" style="user-select: none; -moz-user-select: none; -khtml-user-select: none; -webkit-user-select: none;">
+				<img id="ajax_load_network" src="{{ MEDIA_URL }}img/ajax_load.gif" alt="saveing"  style="display: none" />
+		    	<div id="infovis"></div>    
+			</div>
+			<div id="log"></div>
+		</div>
+	</div>
+	{% if user.is_staff %}
+	<select name="del_level" id="del_level" onChange="dellevel_change()" >
+		<option id="del_1" title="1" value="1">1</option>
+		<option id="del_2" title="2" value="2">2</option>
+		<option id="del_3" title="3" value="3">3</option>
+		<option id="del_4" title="4" value="4">4</option>
+		<option id="del_5" selected="selected" title="5" value="5">5</option>
+		<option id="del_6" title="6" value="6">6</option>
+		<option id="del_7" title="7" value="7">7</option>
+		<option id="del_100" title="100" value="100">100</option>
+	</select>
+	<select name="layer_level" id="layer_level" onChange="laylevel_change()" >
+		<option id="lay_0" title="0" value="0">0</option>
+		<option id="lay_1" selected="selected"　title="1" value="1">1</option>
+		<option id="lay_2" title="2" value="2">2</option>
+		<option id="lay_3" title="3" value="3">3</option>
+	</select>
+    <input type="button" value="Refresh" onclick="infovis_init()" />
+	{% endif %}
+	<div id="inner-details"></div>
+</div>
+<div class="content_section">
+	<h2>{{tag.name}}のタグがついたレポート一覧</h2>
+	{% if contents_items %}<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in contents_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+	{% else %}
+	<p>登録されたレポートがありません</p>
+	{% endif %}
+	<link type="text/css" href="{{ MEDIA_URL }}css/jit/base.css" rel="stylesheet" />
+	<link type="text/css" href="{{ MEDIA_URL }}css/jit/ForceDirected.css" rel="stylesheet" />
+	<script type="text/javascript">
+	<!--
+	  var network_target_id = {{tag.id}};
+	  var network_view_level = 5;
+	{% if user.is_staff %}
+	  var network_delete_level = 5;
+	{% else %}
+	  var network_delete_level = 0;
+	{% endif %}
+	  var network_layer_level = 0;
+		window.onload = function(){
+			infovis_init();
+		};
+	//-->
+	</script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+	<!-- JIT Library File -->
+	<script language="javascript" type="text/javascript" src="{{ MEDIA_URL }}js/jit/jit.js"></script>
+
+	<!-- Example File -->
+	<script language="javascript" type="text/javascript" src="{{ MEDIA_URL }}js/jit/network1.js"></script>
+</div>
+{% endblock main %}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"><!-- "ja" added -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{{title}}</title>
+<link href="{{ MEDIA_URL }}css/isreport.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="page-template.xpgt"/>
+<link href="{{ MEDIA_URL }}css/report.css" type="text/css" rel="stylesheet" />
+<script type="text/x-mathjax-config"> 
+<!--
+	MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']] } });
+//-->
+</script> 
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> 
+<meta http-equiv="X-UA-Compatible" CONTENT="IE=EmulateIE7" />
+<script type="text/javascript">
+	<!--
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-9609071-3']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	//-->
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="content_wrapper">
+		<div id='header'> 
+			<h1 id="title">{% if entry %}{{entry.title}}{% else %}Title{% endif %}</h1> 
+			<h3 id="authors">{% if entry %}{% for author in entry.get_authors_order %}<a href="/isreport/author/{{author.name|iriencode}}" target="_blank" title="{{author.roman}}-IS Report" class="author_link">{{author.roman}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}{% else %}Authors{% endif %}</h3> 
+			<h4 id='number'><a href="/isreport/entry/{{entry.id}}" class="header_links">IS Report　 No. <span id="report_num">{% if entry %}{{entry.num}}{% endif %}</span></a></h4> 
+			<h4 id='date'>{% if entry %}{{entry.get_publish_en}}{% else %}{% now "B d. Y" %}{% endif %}</h4> 
+			<div id='abstract_wrapper'>
+				<span id="abstract">{% if entry.abstract %}Abstract{% endif %}</span>
+				<span id="abstract_content">{% if entry %}{{entry.abstract}}{% else %}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.{% endif %}</span>
+			</div>
+		</div>
+		<div id="content">
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		</div>
+		<div id="footer">
+			<pre class="copyright">{% for author in entry.get_authors_order %}<span class="copy_author">Copyright (C) <span class="copy_date">{{pub_year}}</span> {{author.roman}}, All rights reserved.</span>{% if not forloop.last %}
+{% endif %}{% endfor %}
+No part of this document may be reproduced, copied, distributed,transferred, modified, or transmitted, in any form or by any means,without the prior written permission of the authors.
+In no event shall the authors be liable for any damages caused in any way out of the use of this document．
+</pre>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>アカウント</h2>
+	<div class="marg15">
+	<h3>Login</h3>
+		<div class="marg15">
+			<form id="form" name="form1" method="post" action="/isreport/login">
+				{% if loginError %}
+				<p class="red">{{loginError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>Username</dt>
+					<dd><input type="text" name="username" value="{{username}}" placeholder='account'></dd>
+					<dt>Password</dt>
+					<dd><input type="password" name="password" value="{{pass}}" placeholder='password'></dd>
+					<dt></dt>
+					<dd><input type="submit" value="Login"/><input type="reset" value="Cancel"/></dd>
+				</dl>
+                {% csrf_token %}
+			</form>
+		</div>
+	<h3>Create Account</h3>
+		<div class="marg15">
+			{% if create %}
+			<form id="form2" name="form2" method="post" action="/isreport/login">
+				{% if createError %}
+				<p class="red">{{createError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>Username</dt>
+					<dd><input type="text" name="username" value="{{username}}" placeholder='account'></dd>
+					<dt>Password</dt><dd><input type="password" name="password" value="{{pass}}" placeholder='password'></dd>
+					<dt>Secret Key</dt><dd><input type="password" name="secret" value=""></dd>
+					<dt></dt>
+					<dd><input type="submit" value="Create"/><input type="reset" value="Cancel"/><input type="hidden" name="create" value="true"></dd>
+				</dl>
+                {% csrf_token %}
+			</form>
+			{% else %}
+			<form id="form" name="form" method="get" action="/isreport/login">
+				<dl class="list">
+					<dt><input type="hidden" name="create" value="true"></dt>
+					<dd><input type="submit" value="Create Account"/></dd>
+				</dl>
+	            {% csrf_token %}
+		    </form>
+			{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock main %}

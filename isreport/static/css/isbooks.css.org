@@ -1,0 +1,76 @@
+body,pre{color:#333;font-family:"ヒラギノ角ゴ Pro W3", "メイリオ", "ＭＳ Ｐゴシック", sans-serif;font-size:1em;font-size-adjust:none;font-style:normal;font-variant:normal;font-weight:400;line-height:normal;text-align:left}
+*{margin:0;padding:0}
+A:hover{color:#038}
+a{color:#2276BB;text-decoration:none}
+.logo img{border-color:transparent;border-width:0;position:relative;}
+ul{list-style-image:none;list-style-position:outside;list-style-type:none}
+/*table{border-collapse:collapse;border-spacing:0;width:100%;margin-bottom:30px;font-size:100%;letter-spacing:.02em}
+th,td{padding:10px 20px}*/
+.top-navigation {
+display:inline-block;
+padding:0 0.7em;
+white-space:nowrap;
+}
+.top-navigation > li {
+position:relative;
+margin-left:9px;
+list-style-image:url(/img/zoom_clip.png);
+}
+.top-navigation * {
+display:inline;
+}
+.top-navigation > li > a {
+border:1px solid transparent;
+display:inline-block;
+font-size:1.05em;
+padding:0.5em 0.15em;
+}
+
+.logo{
+	font-size:40px;
+	color:#2b96c0;
+	font-weight:200;
+}
+.title{border-left:#0518A4 3px solid;padding:00}
+pre {
+	white-space: pre;           /* CSS 2.0 */
+	white-space: pre-wrap;      /* CSS 2.1 */
+	white-space: pre-line;      /* CSS 3.0 */
+	white-space: -pre-wrap;     /* Opera 4-6 */
+	white-space: -o-pre-wrap;   /* Opera 7 */
+	white-space: -moz-pre-wrap; /* Mozilla */
+	white-space: -hp-pre-wrap;  /* HP Printers */
+	word-wrap: break-word;      /* IE 5+ */
+	color:navy;
+	}
+h1{
+	height:30px;
+	color:#2276BB;
+}
+#wrapper{position:relative;text-align:left;width:80%;max-width:800px;min-height:600px;margin:1em auto}
+#contents{width:800px;border-color:#DDD #AAA #AAA #DDD}
+#header{height:80px;position:top;letter-spacing:.1em;text-align:left;border-bottom:2px solid #ccc;margin:0 auto 20px;padding:0 0 40px 20px}
+#navi{float:left;width:100px;height:500px}
+/*#content{float:left;width:930px;min-height:400px;height:100%;margin-left:30px}*/
+#footer{text-align:center;color:#696969;position:relative;font-size:15px;height:16px;margin-top:50px;border-color:#CCC;border-style:solid;border-width:1px 0 0;padding:30px}
+#display{overflow:hidden}
+#operation{
+/*	border-bottom:2px solid #222299;*/
+	display:inline-block;
+	float:left;
+/*	margin:-25px 30px 20px 20px;*/
+	padding:0 0.7em;
+	position:relative;
+	top:45px;
+	white-space:nowrap;
+	}
+#side{
+	float:left;
+	width:190px;
+/*	border:1px solid black;*/
+}
+#article{
+	float:right;
+	width:600px;
+/*	border:1px solid navy;*/
+}

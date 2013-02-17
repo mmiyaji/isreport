@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><!-- "ja" added -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>{{title}}</title>
+<link href="{{ MEDIA_URL }}css/isreport.css" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="page-template.xpgt"/>
+<script type="text/javascript">
+	<!--
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-9609071-3']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	//-->
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="content_wrapper">
+		<div id='header'> 
+			<h1 id="title">{% if entry %}{{entry.title}}{% else %}タイトル{% endif %}</h1> 
+			<h2 id="authors">{% if entry %}{% for author in entry.get_authors_order %}<a href="/isreport/author/{{author.name}}" target="_blank" title="{{author.roman}}-IS Report著者紹介" class="author_link">{{author.name}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}{% else %}著者{% endif %}</h2> 
+			<h3 id='number'><a href="/isreport/entry/{{entry.id}}">IS Report　 No. <span id="report_num">{% if entry %}{{entry.num}}{% endif %}</span></a></h3> 
+			<h3 id='date'>{% if entry %}{{entry.get_publish}}{% else %}{% now "Y年n月j日" %}{% endif %}</h3> 
+			<div id='abstract_wrapper'>
+				<span id="abstract">{% if entry.abstract %}Abstract{% endif %}</span>
+				<span id="abstract_content">{% if entry %}{{entry.abstract}}{% else %}Person tracking is an important function to an automatic surveillance system using a vision sensor. However, it is difficult to identify a person exactly in an image due to the variety of poses. This paper describes a method for automatic person tracking based on face detection using Haar-like features and mean-shift tracking. The method increases its trackability by using multi-viewpoint images. A preliminary experiment showed the validity of the method.{% endif %}</span>
+			</div>
+		</div>
+		<div id="content">
+			
+		</div>
+		<div id="footer">
+			<pre class="copyright">{% for author in entry.get_authors_order %}<span class="copy_author">Copyright (C) <span class="copy_date">{{pub_year}}</span> {{author.roman}}, All rights reserved.</span>{% if not forloop.last %}
+				{% endif %}{% endfor %}
+No part of this document may be reproduced, copied, distributed,transferred, modified, or transmitted, in any form or by any means,without the prior written permission of the authors.
+In no event shall the authors be liable for any damages caused in any way out of the use of this document．
+</pre>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

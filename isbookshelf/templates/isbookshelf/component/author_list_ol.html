@@ -1,0 +1,6 @@
+<li>
+<select name="authors" id="authors_{{entry.id}}">
+	{% for author in authors %}
+	<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}}　：　{% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
+</select><a href="javascript:void(0)" onclick="delete_author(this)">×</a>
+</li>

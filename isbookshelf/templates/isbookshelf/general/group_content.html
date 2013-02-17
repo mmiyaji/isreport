@@ -1,0 +1,26 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>研究グループ紹介</h2>
+	<div class="marg15">
+		<div class="marg15 hovs hei180">
+			<h3><a>{{group.name}}</a><span class="utility">{% if user.is_staff %}<a class="action edits" id="group_{{item.id}}" title="編集する" href="/isreport/edit_group?target={{group.id}}">編集</a></span>{%endif%}</h3>
+			<dl class="list">
+				<dt><img src="{% if group.img_url %}{{group.img_url}}{% else %}{{MEDIA_URL}}/img/noimage.png{% endif %}" alt="noimage" width="80"/></dt>
+				<dd><pre class="description">{{group.personal|default:"N/A"}}</pre></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="content_section">
+	<h2>{{group.name}}グループのレポート一覧</h2>
+	{% if contents_items %}<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in contents_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+	{% else %}
+	<p>登録されたレポートがありません</p>
+	{% endif %}
+</div>
+{% endblock main %}

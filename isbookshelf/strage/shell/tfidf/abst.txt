@@ -1,0 +1,151 @@
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja"><!-- "ja" added --> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+<title>Smith Waterman法のアルゴリズム</title> 
+<link href="css/isreport.css" type="text/css" rel="stylesheet" /> 
+<link href="css/report.css" type="text/css" rel="stylesheet" /> 
+<script type="text/x-mathjax-config"> 
+<!--
+	MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']] } });
+//-->
+</script> 
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script> 
+<meta http-equiv="X-UA-Compatible" CONTENT="IE=EmulateIE7" /> 
+<link rel="stylesheet" type="application/vnd.adobe-page-template+xml" href="page-template.xpgt"/> 
+<script type="text/javascript"> 
+	<!--
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-9609071-3']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	//-->
+</script> 
+</head> 
+<body>
+	<div id="wrapper">
+		<div id="content_wrapper">
+		<div id="header"> 
+			<h1 id="title">Smith Waterman法のアルゴリズム</h1> 
+			<h3 id="authors"><a href="/isreport/author/%E5%BB%A3%E5%AE%89%20%E7%9F%A5%E4%B9%8B" target="_blank" title="Tomoyuki HIROYASU-IS Report著者紹介" class="author_link">廣安 知之</a>， <a href="/isreport/author/%E8%A5%BF%E4%BA%95%20%E7%90%A2%E7%9C%9F" target="_blank" title="Takuma NISHII-IS Report著者紹介" class="author_link">西井 琢真</a>， <a href="/isreport/author/%E5%90%89%E8%A6%8B%20%E7%9C%9F%E8%81%A1" target="_blank" title="Masato YOSHIMI-IS Report著者紹介" class="author_link">吉見 真聡</a></h3> 
+			<h4 id="number"><a href="/isreport/entry/1550" class="header_links">IS Report　 No. <span id="report_num">2011021007</span></a></h4> 
+			<h4 id="date">2011年05月06日</h4> 
+			<div id="abstract_wrapper">
+				<span id="abstract">Abstract</span>
+				<span id="abstract_content">ここでは，バイオインフォマティクスの分野で広く用いられている文字列検索アルゴリズムであるSmith Waterman アルゴリズム(SW法)について説明する．特徴としては，GPUを用いたライブラリが豊富であり非常に高速な探索が可能であることが挙げられる．</span>
+			</div>
+		</div>
+		<div id="content"><div class="section">
+	<h3 class="section" name="section1">1&nbsp;&nbsp; Smith Waterman法</h3><div class="section_content">
+	<p>Smith Waterman法は，バイオインフォマティクスの分野で広く用いられている文字列検索アルゴリズムである．DNAや塩基配列の探索によく用いられる相同性検索の一手法である．</p>
+	<p>Smith Waterman法は，２種類の異なる文字列から，最適な類似部分を抽出することができる．</p>
+	<p>長さがmとnの文字列から類似部分を抽出する場合，アルゴリズムのオーダーはO(mn)である．</p>
+	<p><br></p>
+	<p>SW法を用いて抽出された部分文字列の例その１</p>
+	<p></p><div style="border :1px solid #000000"><p></p>
+	<p>P<span style="color:#0099FF;">ELICAN</span> → <span style="color:#0099FF;">ELICAN</span> </p>
+	<p>CO<span style="color:#0099FF;">ELACAN</span>TH → <span style="color:#0099FF;">ELACAN</span></p>
+	<p></p></div><p></p>
+	<p><br></p>
+	<p>SW法を用いて抽出された部分文字列の例その２</p>
+	<p></p><div style="border :1px solid #000000"><p></p>
+	<p>P<span style="color:#0099FF;">AWHE</span>AE → <span style="color:#0099FF;">AW HE</span></p>
+	<p>HEAG<span style="color:#0099FF;">AWGHE</span>E → <span style="color:#0099FF;">AWGHE</span></p>
+	<p></p></div><p></p>
+	<p>スペースを入れた場合の探索も行われる．</p>
+</div>	<h4 class="subsection" name="subsection1.1">1.1&nbsp;&nbsp; スコアパラメータ</h4><div class="subsection_content">
+	<p>SW法にはmatch, mismatch, gapの3つのパラメータがある．</p>
+	<p>matchは文字列の一致に，mismatchは文字列の不一致に，gapは文字列がずれる場合にどのくらいそれを許容するかに関わるパラメータである．</p>
+	<p>このアルゴリズムの説明の際は，match=1, mismatch=-1, gap=-1がよく用いられるが，最適なパラメータは対象とする文字列によって異なると考えられる．</p>
+	<p>これらのパラメータが変化すれば抽出される文字列も変化する．</p>
+	
+	<p>mismatchがmatchより低ければ低いほど，抽出される類似部分の長さは短くなり，その分，一致度の高い文字列を抽出することができる．</p>
+	<p>また，類似部分の比較を行う際，スペースが入ることで類似度が高くなる部分文字列も存在する．</p>
+	<p>gapは0に近いほど，文字列のずれを許容した部分文字列が抽出される．</p>
+	
+	<p>先程も述べたが，どのパラメータが最適であるかは，元データやどのような類似文字列を抽出するかによって異なる．</p>
+	
+	<br>
+</div>	<h4 class="subsection" name="subsection1.2">1.2&nbsp;&nbsp; アルゴリズム</h4><div class="subsection_content">
+	<p>SW法はFig.1に示す文字列テーブルを用いて行われる．</p>
+	<p>SW法のアルゴリズムの流れをFig.2〜Fig.5に示す．</p>
+	<ol>
+		<li> 文字列テーブルを作成し，それぞれの文字列を列と行に割り当て初期化を行う．</li>
+		<li> それぞれのセルにおけるスコアを文字の一致や不一致及び数式１，数式２に基づき計算する</li>
+		<li> テーブルの終了までスコアを計算する</li>
+		<li> 最も高いスコアを持つセルからスコアが0のセルまで経路をたどることにより，文字列を取り出す．(トレースバック</li>
+	</ol>
+	
+<div class="img_div"><img alt="1550_image3.png" src="images/1550_image3.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig1" name="figure1">Fig.1</a>&nbsp; 文字列テーブル</div>
+
+<div class="img_div"><img alt="1550_image4.png" src="images/1550_image4.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig2" name="figure2">Fig.2</a>&nbsp; テーブルの初期化</div>
+
+<div class="img_div"><img alt="1550_image6.png" src="images/1550_image6.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig3" name="figure3">Fig.3</a>&nbsp; セルのスコア計算方法</div>
+
+<div class="img_div"><img alt="1550_image7.png" src="images/1550_image7.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig4" name="figure4">Fig.4</a>&nbsp; 全てのセルのスコア計算</div>
+
+<div class="img_div"><img alt="1550_image8.png" src="images/1550_image8.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig5" name="figure5">Fig.5</a>&nbsp; トレースバック</div>
+
+	
+<div class="img_div"><img alt="1550_image9.png" src="images/1550_image9.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig6" name="figure6">Fig.6</a>&nbsp; 数式１</div>
+
+<div class="img_div"><img alt="1550_image10.png" src="images/1550_image10.png" width="400">
+</div>
+
+<div class="centers figs"><a href="#fig7" name="figure7">Fig.7</a>&nbsp; 数式２</div>
+
+	
+	<p>Fig.2は，文字列“BBC"と“CBC"の類似部分をSW法で求めた時の過程を，Fig.6,Fig.7はスコアの計算式を表している．</p>
+	<p>例えば，Fig.3において最初に計算されるセル(1,1)のスコアは，セルの上の文字が"C"，左の文字が"B"と不一致なので，Fig.7が適用され，以下のようになる．</p>
+	<p>SW(1,1) = max{SW(0,0) - 1,SW(0,1)-1, SW(1,0) - 1, 0} = 0</p>
+	
+	<p>また，セル(1,2)においてスコアは，セルの上の文字が"B"，左の文字が"B"と一致なので，Fig.6が適用され，以下のようになる．</p>
+	<p>SW(1,2) = max{SW(0,1) + 1,SW(0,2) - 1, SW(1,1) - 1, 0} = 1</p>
+	
+	<p>途中でスコアがマイナスになった場合は，そのセルのスコアは0になる．</p>
+	
+	<p>Fig.5の状態から類似部分を得るために，"最大のスコア"のセルからスコアが0のセルまでトレースバックを行う．そのため，スコアの計算時にそれぞれのセルに対してどのセルから辿ってきたか目印をつける必要がある．もし，左セル，左上セル，上セルでスコアが重なっていれば，左上セル，左セル，上セルの順に優先して矢印をつけることとする．Fig.5において，最大値が(3,3)に当たるのでトレースバックは(3,3), (2,2), (1,1)という経路をたどる．0に辿りつけばトレースバックは終了し，辿ってきたセルの上と左の文字から類似部分を抽出する．</p>
+	<p>(3,3)の上の文字は“C"，左の文字は"C"であり，(2,2)の上の文字は“B"，左の文字は“B"である．これにより“BBC"から“BC"が，“CBC"から“BC"の部分文字列が抽出される．</p>
+	
+	<br>
+
+</div><div class="reference"><h3 class="section">References</h3><div class="reference_content"><ul id="reference_list">	<li class="reference"><a href="#ref1" name="r1">[1]</a>  The Smith-Waterman Algorithm<br><a href="http://www.med.nyu.edu/rcr/rcr/course/sim-sw.html" target="_blank">http://www.med.nyu.edu/rcr/rcr/course/sim-sw.html</a></li>
+</ul></div></div>
+</div></div>
+		<div id="footer">
+			<pre class="copyright"><span class="copy_author">Copyright (C) <span class="copy_date">2010</span> Tomoyuki HIROYASU, All rights reserved.</span>
+<span class="copy_author">Copyright (C) <span class="copy_date">2010</span> Takuma NISHII, All rights reserved.</span>
+<span class="copy_author">Copyright (C) <span class="copy_date">2010</span> Masato YOSHIMI, All rights reserved.</span>
+No part of this document may be reproduced, copied, distributed,transferred, modified, or transmitted, in any form or by any means,without the prior written permission of the authors.
+In no event shall the authors be liable for any damages caused in any way out of the use of this document．
+</pre>
+		</div>
+		</div>
+	</div>
+
+</body> 
+</html>

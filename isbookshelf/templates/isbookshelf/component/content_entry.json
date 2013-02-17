@@ -1,0 +1,13 @@
+[
+	{% for recom_item in recom_items %}{
+	"id": "{{recom_item.id}}",
+	"authors":[
+		{{% for author in recom_item.get_authors_order %}
+			"id": "{{author.id}}",
+			"name": "{{author.name|iriencode}}"
+			{% if not forloop.last %},{% endif %}{% endfor %}
+		}
+	],
+	"title": "{{recom_item.title}}"
+	}{% if not forloop.last %},{% endif %}{% endfor %}
+]

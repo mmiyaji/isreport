@@ -1,0 +1,115 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>レポート編集</h2>
+		<div class="marg15">
+			<h3><a href="/isreport/entry/{{entry.id}}" target="_blank">{{entry.title}}</a></h3>
+			<img id="ajax_load" src="{{ MEDIA_URL }}img/ajax_load.gif" alt="saveing" style="display: none" />
+			<div class="marg15">
+				{% if msg %}<p class="check">{{msg}}</p>{% endif %}{% if appuser %}
+				{% if error %}
+				{% ifequal error 1 %}<p class="check">すでに登録済みのISレポートです。レポート番号をご確認下さい。</p>{% endifequal %}
+				{% ifequal error 2 %}<p class="check">壊れたHTMLタグが含まれています。</p>{% endifequal %}
+				{% endif %}
+				<form enctype="multipart/form-data" action='/isreport/add_entry' method='POST' onSubmit='return check_submit(event);'>
+				{% if loginError %}
+				<p class="red">{{loginError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>レポートタイプ</dt>
+					<dd>
+						<label><input type="checkbox" name="istext" class="setting_item" {% if entry.istext %}checked{% endif %}/>HTML Textを公開する</label>　
+					</dd>
+					<dd>
+						<label><input type="checkbox" name="ispdf" class="setting_item" {% if entry.ispdf %}checked{% endif %}/>PDFを公開する（要アップロード）</label>
+					</dd>
+					<dd>
+						<label><input type="checkbox" name="isstyle" class="setting_item" {% if not isstyle %}checked{% endif %}/>IS記法で入力する</label>
+					</dd>
+					<dt>PDF</dt>
+					<dd>
+						<input type="file" name="pdf"/>{% if pdftitle %}<a href="/report/{{entry.path}}/{{pdftitle}}" target="_blank">{{pdftitle}}</a>{% endif %}
+					</dd>
+					<dt>TEXT</dt>
+					<dd>
+						<a href="/isreport/help#isstyle" target="_blank">IS記法</a>にて入力して下さい.
+					</dd>
+					<dd>
+						<label><input type="checkbox" name="prepre" id="prepre" onChange="is_preview(this)" checked="checked"/>プレビュー</label>
+					</dd>
+					<![if !IE ]>
+					<dd>
+						<h3><a href="#" class="red" onclick="set_full_editor()">フルサイズのエディタで開く</a></h3>
+					</dd>
+					<![endif]>
+				</dl>
+				<div id="entry_editor_wrap">
+				<div class="marg15 entry_editor">
+					<div class="editor_utility" id="edits">
+						<ul>
+							<li><div class="utils edit_save" onClick="setfunc('save')" title="保存する - save">&nbsp;</div></li>
+							{# <li><div class="utils edit_undo" onClick="setfunc('editable_frame','Undo',false,null)" title="元に戻す">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_redo" onClick="setfunc('editable_frame','Redo',false,null)" title="やり直し">&nbsp;</div></li> #}
+							<li><div class="utils edit_h1" onClick="setfunc('h1')" title="章を追加 - *">&nbsp;</div></li>
+							<li><div class="utils edit_h2" onClick="setfunc('h2')" title="節を追加 - **">&nbsp;</div></li>
+							<li><div class="utils edit_h3" onClick="setfunc('h3')" title="項を追加 - ***">&nbsp;</div></li>
+							<li><div class="utils edit_bold" onClick="setfunc('bold')" title="太字のタグを挿入 - <b></<b>">&nbsp;</div></li>
+							<li><div class="utils edit_ital" onClick="setfunc('italic')" title="斜体のタグを挿入 - <i></i>">&nbsp;</div></li>
+							<li><div class="utils edit_font" onClick="setfunc('resize')" title="フォントサイズを変える - <span style='font-size:150%;'></span>">&nbsp;</div></li>
+							{# <li><div class="utils edit_unde" onClick="setfunc('editable_frame','underline',false,null)" title="underline">&nbsp;</div></li> #}
+							<li><div class="utils edit_colo" onClick="setfunc('color')" title="文字色を変える - <span style='color:#CC0000;'></span>">&nbsp;</div></li>
+							<li><div class="utils edit_back" onClick="setfunc('backcolor')" title="背景色を変える - <span style='background-color:#CCCCFC;'></span>">&nbsp;</div></li>
+							<li><div class="utils edit_link" onClick="setfunc('link');" title="リンクタグを挿入 - <a><a/>">&nbsp;</div></li>
+							<li><div class="utils edit_olis" onClick="setfunc('list')" title="番号付きリストを追加 - +">&nbsp;</div></li>
+							<li><div class="utils edit_ulis" onClick="setfunc('olist')" title="番号なしリストを追加 - -">&nbsp;</div></li>
+							<li><div class="utils edit_imag" onClick="setfunc('image');" title="イメージを追加 - %%">&nbsp;</div></li>
+							<li><div class="utils edit_math" onClick="setfunc('numeric');" title="数式を追加 - $ $ ">&nbsp;</div></li>
+							{# <li><div class="utils edit_inde" onClick="setfunc('editable_frame','indent',false,null)" title="indent">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_oude" onClick="setfunc('editable_frame','outdent',false,null)" title="outdent">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_jusl" onClick="setfunc('editable_frame','justifyleft',false,null)" title="justifyleft">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_jusc" onClick="setfunc('editable_frame','justifycenter',false,null)" title="justifycenter">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_jusr" onClick="setfunc('editable_frame','justifyright',false,null)" title="justifyright">&nbsp;</div></li> #}
+							<li><div class="utils edit_quat" onClick="setfunc('blockquote')" title="引用符を追加 - <blockquote>">&nbsp;</div></li>
+							<li><div class="utils edit_quat" onClick="setfunc('block')" title="カッコ - >? ?<">&nbsp;</div></li>
+							<li><div class="utils edit_tabl" onClick="setfunc('table')" title="テーブルを追加 - ||">&nbsp;</div></li>
+							<li><div class="utils edit_sups" onClick="setfunc('sup')" title="上つき文字を挿入 - <sup></sup>">&nbsp;</div></li>
+							<li><div class="utils edit_subs" onClick="setfunc('sub')" title="下つき文字を挿入 - <sub></sub>">&nbsp;</div></li>
+							<li><div class="utils edit_dele" onClick="setfunc('del')" title="取消線を引く - <del></del>">&nbsp;</div></li>
+							<li><div class="utils edit_hr" onClick="setfunc('hr')" title="横線を追加 - <hr />">&nbsp;</div></li>
+							<li><div class="utils edit_come" onClick="setfunc('comment')" title="註釈を追加 - (())">&nbsp;</div></li>
+							<li><div class="utils edit_cite" onClick="setfunc('cite')" title="参考文献を追加 - #">&nbsp;</div></li>
+							{# <li><div class="utils edit_hr" onClick="setfunc('hr')" title="横線を追加">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_code" onClick="create_frame('wrapper','code');" title="code">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_pre" onClick="setfunc('editable_frame','inserthtml',false,'<br /><div class=\'code_content\'><pre><code>code</code></pre></div><br />')" title="pre">&nbsp;</div></li> #}
+							{# <li><div class="utils edit_math" onClick="setfunc('editable_frame','inserthtml',false,'<br /> <div class=\'content_center content_dot\'><table class=\'table_nume\'><tr><td>Y=X<sup>2</sup>+1</td><td>[1.2]</td></tr></table></div><br />');" title="数式">&nbsp;</div></li> #}
+						</ul>
+					</div>
+					<pre id="hov_text"></pre>
+					<textarea name="soups" id="soup_text" class='flexarea report_html' cols="50" rows="5" >{% if orgs %}{{orgs}}{% else %}{% include "isbookshelf/component/wiki_preview.html" %}{% endif %}</textarea>
+				</div>
+				<div class="marg15 entry_editor">
+					プレビュー　<a href="/report/{{entry.path}}/index.html" target="_blank">別ウィンドウでプレビューを開く</a> <a href="#" class="red" onclick="set_full_editor()">エディタの切り替え</a>
+					<iframe class="lframe" name="preview_frame" id="preview" src="/isreport/preview?id={{entry.id}}">iframe対応環境でご覧頂けます</iframe>
+				</div>
+				</div>
+				<input type="hidden" id="entry_ids" name="id" value="{{entry.id}}" />
+				<input type="hidden" id="dirpath" name="dirpath" value="{{entry.path}}" />
+				<input type="hidden" id="entry_isdraft" name="isdraft" value="" />
+				<input type="hidden" id="entry_istranslate" name="istranslate" value="" />
+				<input type="hidden" name="html_body" value="" id="html_body" />
+				<input type="hidden" name="html_body_def" value="" id="html_body_def" />
+				{% if uploaded %}
+				<input type="submit" id="set_subs" value="再解析" />
+				{% else %}
+				<input type="submit" id="set_subs" name="wrt" value="承認待ち/公開状態にする"/><input type="submit" id="set_draft" name="pre" value="下書き保存" onClick="setdraft()" />
+				{# <input type="submit" id="set_subs" value="保存して英訳する" onClick="setlang()"/> #}
+				{% endif %}
+			{% csrf_token %}</form>
+			{% endif %}
+			</div>
+		</div>
+</div>
+<script>
+window.onload = init;
+</script>
+{% endblock main %}

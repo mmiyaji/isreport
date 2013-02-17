@@ -1,0 +1,18 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>管理者 / 著者編集</h2>
+		<div class="marg15">
+			<h3><a href="/isreport/author/{{author.name|iriencode}}">{{author.name}}</a></h3>
+			<div class="marg15">
+				<form id="form" name="form" method="post" action="/isreport/edit_author">
+					<dl class="list">
+						{% include "isbookshelf/component/edit_author_short.html" %}
+						<dd><input type="hidden" name="target" value="{{author.id}}"/>
+						<input type="submit" value="変更する"/></dd></dd>
+					</dl>
+				{% csrf_token %}</form>
+			</div>
+		</div>
+</div>
+{% endblock main %}

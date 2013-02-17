@@ -1,0 +1,17 @@
+<div class="hovs clearfix hei180">
+<h3 class="report_title"><a href="/isreport/group/{{item.name|iriencode}}">{{item.name}}</a>
+	{% if user.is_staff %}<span class="utility">
+		<a class="action edits" id="group_{{item.id}}" title="編集する" href="/isreport/edit_group?target={{item.id}}">編集</a>
+		<!-- <a class="action util_etc" id="etc_{{item.id}}" title="コンテンツを削除する">　</a> -->
+	</span>{% endif %}
+</h3>
+<dl class="list">
+	<dt>{% if item.img_url %}
+		<img src="{{item.img_url}}" alt="group icon" width="80"/>
+		{% else %}
+		<img src="{{MEDIA_URL}}img/noimage.png" alt="noimage" width="80"/>
+	{% endif %}
+	</dt>
+	<dd><pre class="description">{{item.personal|default:"N/A"}}</pre></dd>
+</dl>
+</div>

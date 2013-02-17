@@ -1,0 +1,11 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>タグ（キーワード）一覧</h2>
+	<div class="marg15">
+		<ul class="mini_list">{% for item in items %}{% include "isbookshelf/component/keyword_short.html" %}{% endfor %}
+		</ul>
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% endblock main %}

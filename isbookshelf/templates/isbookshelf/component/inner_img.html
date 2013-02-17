@@ -1,0 +1,8 @@
+<div class='movable_content' id="book_entry">
+	<iframe class="img_frame" src="/isreport/ajax/img_upload?id={{entry.id}}"></iframe>
+	<input type='submit' value='図貼り付け' onclick='paste_img()' />
+	<input type='submit' value='式貼り付け' onclick='paste_figures(false)' />
+	<input type='submit' value='文中貼り付け' onclick='paste_figures(true)' />
+	<input type='submit' value='画像リスト' onclick='show_img({{entry.id}})' />
+	<input type='submit' value='キャンセル' onclick='hide_curtain()' />
+</div>

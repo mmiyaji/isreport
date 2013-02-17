@@ -1,0 +1,62 @@
+*{margin:0;padding:0}
+
+pre { font-size: x-small; }
+/*h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+h4 { text-align: center; }
+h5 { text-align: center; }
+h6 { text-align: center; }*/
+img{
+	border-color:transparent;border-width:0;
+	position:absolute;
+	top:0;
+	left:0;
+	right:0;
+	bottom:0;
+	width:100%;
+	z-index:0;
+	height:100%;
+	}
+#wrapper{
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+/*	background-image:url("../images/isbooks_cover.png");
+	background-repeat:no-repeat;*/
+}
+#content{
+/*	margin:100px;
+	background-color:white;
+	padding:50px;
+	background: -moz-linear-gradient(center top, #efeff8 0%,#fff 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #efeff8),color-stop(1, #fff));
+	margin-right:10px;
+	border:1px solid #6699FF;
+	font-size:0.8em;
+	padding:3px;*/
+}
+p{
+	position:absolute;
+	z-index:1;
+	left:10%;
+}
+#cover_p{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+p.title{
+	font-size:150%;
+	top:20%;
+}
+p.author{
+	top:60%;
+}
+p.publisher{
+	top:50%;
+}
+p.link{
+	top:60%;
+}

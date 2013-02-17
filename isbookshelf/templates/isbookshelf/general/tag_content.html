@@ -1,0 +1,26 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>タグ（キーワード）説明</h2>
+	<div class="marg15">
+		<div class="marg15 hovs">
+			<h3><a>{{tag.name}}</a><span class="utility">{% if user.is_staff %}<a class="action edits" id="tag_{{item.id}}" title="編集する" href="/isreport/edit_tag?target={{tag.id}}">編集</a></span>{%endif%}</h3>
+			<dl class="list">
+				<dt>{{tag.name}} とは</dt>
+				<dd><pre class="description">{{tag.description|default:"N/A"}}</pre></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="content_section">
+	<h2>{{tag.name}}のタグがついたレポート一覧</h2>
+	{% if contents_items %}<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in contents_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+	{% else %}
+	<p>登録されたレポートがありません</p>
+	{% endif %}
+</div>
+{% endblock main %}

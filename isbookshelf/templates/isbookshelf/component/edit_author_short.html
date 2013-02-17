@@ -1,0 +1,36 @@
+{% if createError %}
+<p class="error">{{createError}}</p>
+{% endif %}
+{% if author.id %}
+<dt>ID</dt>
+<dd>{{author.id}}</dd>	
+{% endif %}
+<dt>名前</dt>
+<dd><input type="text" name="name" value="{{author.name}}"/></dd>
+<dt>ローマ字</dt>
+<dd><input type="text" name="roman" value="{{author.roman}}"/></dd>
+<dt>アイコンURL</dt>
+<dd><input type="text" name="img_url" value='{{author.img_url|default:"http://"}}'/></dd>
+<dt>役割</dt>
+<dd>
+	<select id="select_post" name="authorpost" onChange="author_change()">
+		<option {%ifequal author.rank "gra"%}selected="selected"{%endifequal%} value="gra">学部4年</option>
+		<option {%ifequal author.rank "m1"%}selected="selected"{%endifequal%} value="m1">修士1年</option>
+		<option {%ifequal author.rank "m2"%}selected="selected"{%endifequal%} value="m2">修士2年</option>
+		<option {%ifequal author.rank "doc"%}selected="selected"{%endifequal%} value="doc">博士課程後期</option>
+		<option {%ifequal author.rank "etc"%}selected="selected"{%endifequal%} value="etc">研究員</option>
+		<option {%ifequal author.rank "prof"%}selected="selected"{%endifequal%} value="prof">教員</option>
+		<option {%ifequal author.rank "ob"%}selected="selected"{%endifequal%} value="ob">卒業生</option>
+	</select>
+</dd>
+<dt>在籍年度</dt>
+<dd>
+	<select id="setting_year" name="setting_year" multiple="">
+		<option value="0">UnKnown</option>
+		{% for year in years %}
+		<option value="{{year}}" {% for auth_year in author.get_years %}{% ifequal year auth_year %}selected="selected"{% endifequal %}{% endfor %} title="{{year}}年度">{{year}}年度</option>
+		{% endfor %}
+	</select>
+</dd>
+<dt>紹介</dt>
+<dd><span class="red">*入力がそのまま出力されます．(preタグ)</span><textarea name="personal" class="flexarea">{{author.personal}}</textarea></dd>

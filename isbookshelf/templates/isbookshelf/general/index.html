@@ -1,0 +1,40 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>Home</h2>
+	<div class="marg15">
+	<h3><a href="/isreport/">IS Report System</a></h3>
+		<p>本サイトは
+		「<a href="http://is.doshisha.ac.jp/" target="_blank">同志社大学生命医科学部医情報学科 医療情報システム研究室</a>」
+		及び
+		「<a href="http://mikilab.doshisha.ac.jp/" target="_blank">同志社大学工学部インテリジェント工学科 知的システムデザイン研究室</a>」
+		の所有する研究報告である ISレポートの管理システムです．<br/>
+		利用方法は <a href="/isreport/help" target="_blank">Help</a> を参考にしてください．<br/>
+		本サイトに関する お問い合わせはISグループシステム担当&lt; <a href="mailto:report@is.doshisha.ac.jp?subject=&amp;body=">report@is.doshisha.ac.jp</a> &gt; まで．
+		</p>
+		<h3><a>ISレポート</a></h3>
+		<p>
+本研究室では光トポグラフィ，医用画像，医療空間，クラスタリング，多目的最適化，シミュレーテッドアニーリング，遺伝的アルゴリズム，知的照明，並列分散処理，ソーシャルウェアアプリケーションなどの研究を行っています．<br/>
+			ISレポートはこれらの研究内容について，成果や関連研究の文献をまとめた研究報告レポートです．
+		</p>
+	</div>
+</div>
+<div class="content_section">
+	<h2>最新ISレポート</h2>
+	<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in new_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+		{% include "isbookshelf/component/target_pager.html" %}
+	</div>
+</div>
+<div class="content_section">
+	<h2>お知らせ{% if user.is_staff %}<span class="utility"><a class="action edits" title="編集する" href="/isreport/edit_renew">編集</a></span>{% endif %}</h2>
+	<div class="marg15">
+	{% include "isbookshelf/static/top_renew.html" %}
+	<a href="/isreport/renew/">&gt;&gt;Read More</a>
+	</div>
+	<!-- {% if user.is_staff %}
+	<p>※Admin Only <a href="/isreport/edit_renew">お知らせを更新する</a></p>
+	{% endif %} -->
+</div>
+{% endblock main %}

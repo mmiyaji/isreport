@@ -1,0 +1,31 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>ダウンロード</h2>
+	<div class="marg15">
+	<h3>{{book_title}}</h3>
+		<div class="marg15">
+			<form id="form" name="form" method="post" action="/isreport/zip">
+				{% if loginError %}
+				<p class="red">{{loginError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>
+						<img src="{{MEDIA_URL}}/img/isbooks_cover_mini.png" class="coverimg" width="80px" alt="isbooks_cover_mini"/>
+					</dt>
+					{% for entry in entries %}<dd>
+					<p><a href="/isreport/entry/{{item.id}}" target="_blank">{{entry.title}}</a></p>
+					<p>{% for au in entry.authors %}{{au}}{% if not forloop.last %}，{% endif %}{% endfor %}</p>
+					</dd>{% endfor %}
+					<dd>
+						<input type="hidden" name="dirpath" value="{{path}}" />
+						<input type="hidden" name="book_id" value="{{book_id}}" />
+						<input type="submit" id="set_subs" value="作成する"/>
+					</dd>
+				</dl>
+                {% csrf_token %}
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock main %}

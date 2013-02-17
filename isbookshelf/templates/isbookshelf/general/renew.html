@@ -1,0 +1,11 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>お知らせ</h2>
+	<div class="marg15">
+		{% include "isbookshelf/static/renew.html" %}
+		{% if user.is_staff %}
+		【<a href="/isreport/edit_renew">編集</a>】{% endif %}
+	</div>
+</div>
+{% endblock main %}

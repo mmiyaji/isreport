@@ -1,0 +1,250 @@
+iframe.lframe{
+	width:90%;
+	min-width:400px;
+	min-height:700px;
+	height:700px;
+/*	padding:3px;
+	margin-right:10px;*/
+}
+iframe.preview_full{
+	min-width:400px;
+	min-height:700px;
+	height:700px;
+	margin:0;
+	width:95%;
+	height:95%;
+}
+iframe.img_frame{
+	min-width:400px;
+	min-height:700px;
+	height:700px;
+	min-height:250px;
+	height:250px;
+}
+iframe#preview{
+	min-width:400px;
+	min-height:700px;
+	height:700px;
+	width:98%;
+}
+#hov_text{
+	clear:both;
+	padding:5px;
+}
+img#ajax_load{
+/*	display:none;*/
+	position:fixed;
+}
+.editor_utility{
+	width:98%;
+	min-width:400px;
+	margin-bottom:0;
+/*	border:1px solid #D1D3D5;*/
+}
+.editor_utility ul{
+	min-height:26px;
+	padding:2px;
+	float:left;
+	border:1px solid #D1D3D5;
+}
+.editor_utility ul li,.editor_utility ul li{
+	float:left;
+	display: block;
+	width:22px;
+	height:22px;
+	border:1px solid #ddd;
+	margin:1px;
+	cursor:pointer;
+}
+.editor_utility ul li:hover,.editor_utility ul li:hover{
+	border:1px solid navy;
+}
+/*start edit*/
+.editor_utility ul li .utils{
+	margin:3px auto;
+	width:14px;
+	height:14px;
+	background-image:url("/isapps/static/img/editor/utils.gif");
+	background-repeat: no-repeat;
+	display:block;
+}
+.editor_utility ul li .edit_undo{
+	background-position:0px 0px;
+}
+.editor_utility ul li .edit_redo{
+	background-position:-16px 0px;
+}
+.editor_utility ul li .edit_bold{
+	background-position:-32px 0px;
+}
+.editor_utility ul li .edit_ital{
+	background-position:-48px 0px;
+}
+.editor_utility ul li .edit_unde{
+	background-position:-64px 0px;
+}
+.editor_utility ul li .edit_colo{
+	background-position:-80px 0px;
+}
+.editor_utility ul li .edit_back{
+	background-position:-96px 0px;
+}
+.editor_utility ul li .edit_imag{
+	background-position:-112px 0px;
+}
+.editor_utility ul li .edit_oude{
+	background-position:-128px 0px;
+}
+.editor_utility ul li .edit_inde{
+	background-position:-144px 0px;
+}
+.editor_utility ul li .edit_ulis{
+	background-position:-160px 0px;
+}
+.editor_utility ul li .edit_olis{
+	background-position:-176px 0px;
+}
+.editor_utility ul li .edit_jusl{
+	background-position:-192px 0px;
+}
+.editor_utility ul li .edit_jusc{
+	background-position:-208px 0px;
+}
+.editor_utility ul li .edit_jusr{
+	background-position:-224px 0px;
+}
+.editor_utility ul li .edit_quat{
+	background-position:-240px 0px;
+}
+.editor_utility ul li .edit_remo{
+	background-position:-256px 0px;
+}
+.editor_utility ul li .edit_sups{
+	background-position:-702px 0px;
+}
+.editor_utility ul li .edit_subs{
+	background-position:-718px 0px;
+}
+.editor_utility ul li .edit_dele{
+	background-position:-682px 0px;
+}
+.editor_utility ul li .edit_come{
+	background-position:-515px 0px;
+}
+.editor_utility ul li .edit_block{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/code.png");
+}
+.editor_utility ul li .edit_link{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/links.png");
+}
+.editor_utility ul li .edit_h1{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/h1.png");
+}
+.editor_utility ul li .edit_h2{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/h2.png");
+}
+.editor_utility ul li .edit_h3{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/h3.png");
+}
+.editor_utility ul li .edit_hr{
+	background-position:-445px 0px;
+}
+.editor_utility ul li .edit_font{
+	background-position:-599px 0px;
+}
+.editor_utility ul li .edit_tabl{
+	background-position:-666px 0px;
+}
+.editor_utility ul li .edit_code{
+	background-position:0px 0px;
+	height:18px;
+	background-image:url("/isapps/static/img/editor/code.png");
+}
+.editor_utility ul li .edit_pre{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/pre.png");
+}
+.editor_utility ul li .edit_math{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/math.png");
+}
+.editor_utility ul li .edit_save{
+	background-position:0px 0px;
+	background-image:url("/isapps/static/img/editor/saves.png");
+}
+
+.curtain{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgba(200,200,200,0.6);
+}
+.movable{
+	margin:100px auto;
+	width:600px;
+	min-height:120px;
+	max-height:400px;
+	border:4px solid navy;
+	background-color:white;
+	padding:5px;
+}
+.movable .image_lists{
+	overflow:scroll;
+	height:300px;
+}
+.movable .movable_content{
+	margin:30px;
+}
+.movable .movable_content input[type="text"]{
+	width:270px;
+	line-height:20px;
+}
+
+.movable .movable_content input[type="submit"]{
+	margin:0px;
+	line-height:20px;
+}
+.movable .movable_content p{
+	margin-top:10px;
+	color:#666;
+}
+.hide_button{
+/*	position:absolute;*/
+	float:right;
+	font-size:30px;
+	text-decoration:none;
+}
+.full_editor{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:10px;
+}
+.full_editor .entry_editor{
+	float:left;
+	width:45%;
+}
+.black_curtain{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:rgb(10,10,10);
+}
+.white_curtain{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background-color:white;
+}

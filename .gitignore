@@ -1,4 +1,13 @@
-*.log
-*.pot
 *.pyc
-local_settings.py
+*.db
+*.svn*
+*.#*
+.DS_Store
+freeze/*
+*secretkey.txt
+.#*%
+media/tmp/*
+media/archives/*
+!media/tmp/*.txt
+settings_local.py
+settings_deploy.py

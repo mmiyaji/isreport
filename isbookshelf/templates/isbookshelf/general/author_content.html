@@ -1,0 +1,39 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>著者紹介</h2>
+	<div class="marg15">
+		<div class="marg15 hovs hei180">
+			<h3><a>{{author.name}}&nbsp;/&nbsp;{{author.roman}}</a><span class="utility">{% if user.is_staff %}<a class="action edits" id="author_{{item.id}}" title="編集する" href="/isreport/edit_author?target={{author.id}}">編集</a></span>{%endif%}</h3>
+			<dl class="list">
+				<dt><img src="{% if author.img_url %}{{author.img_url}}{% else %}{{MEDIA_URL}}/img/noimage.png{% endif %}" alt="noimage" width="80"/></dt>
+				<dd>
+					<dl class="list">
+						<dt>氏名</dt>
+						<dd>{{author.name}}</dd>
+						<dt>氏名ローマ字表記</dt>
+						<dd>{{author.roman}}</dd>
+						<dt>役職</dt>
+						<dd>{%ifequal author.yearth 0 %}教員{% else %}{{author.yearth}}年度生　{{author.get_rank}}{%endifequal%}</dd>
+						<dt>在籍年度</dt>
+						<dd>{% for auth_year in author.get_years %}<a href="/isreport/year/{{auth_year}}">{{auth_year}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}</dd>
+						<dt>自己紹介</dt>
+						<dd><pre class="description">{{author.personal|default:"N/A"}}</pre></dd>
+					</dl>
+				</dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div class="content_section">
+	<h2>{{author.name}}のレポート一覧</h2>
+	{% if contents_items %}<div class="marg15">
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in contents_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+	{% else %}
+	<p>登録されたレポートがありません</p>
+	{% endif %}
+</div>
+{% endblock main %}

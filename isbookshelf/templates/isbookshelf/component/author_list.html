@@ -1,0 +1,6 @@
+<select name="authors" multiple="" size="5" id="authors" onChange="authors_change(this);">
+	{% for author in authors %}
+	<option id="auth_{{author.id}}" title="{{author.name}},{{author.roman}}" value="{{author.id}}" {% for auth in result.author %}{% ifequal auth author.name %}selected="selected"{% endifequal %}{% endfor %}>{{author.name}} id:{{author.get_ids}}
+	</option>
+	{% endfor %}
+</select>

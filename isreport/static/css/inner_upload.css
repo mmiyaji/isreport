@@ -1,0 +1,11 @@
+*{margin:0;padding:0;}
+div#wrapper{
+	margin:20px;
+}
+div.img_div{
+	text-align:center;
+	float:center;
+}
+img{
+	margin:20px;
+}

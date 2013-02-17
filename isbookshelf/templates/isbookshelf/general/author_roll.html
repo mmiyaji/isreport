@@ -1,0 +1,22 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>著者紹介（所属別）</h2>
+	<div class="marg15">
+		{% for auths in items %}{% if auths.authors %}{% include "isbookshelf/component/author_roll.html" %}{% endif %}{% endfor %}
+		{# {% for item in new_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %} #}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% if user.is_staff %}<div class="content_section admin_only">
+	<h2>管理者 / 著者新規作成</h2>
+	<div class="marg15">
+		<form id="form" name="form" method="post" action="/isreport/create_author">
+			<dl class="list">
+				{% include "isbookshelf/component/edit_author_short.html" %}
+				<dd><input type="submit" value="作成する"/><input type="reset" value="キャンセル"/></dd>
+			</dl>
+		{% csrf_token %}</form>
+	</div>
+</div>{%endif%}
+{% endblock main %}

@@ -1,0 +1,102 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>個人アカウント設定</h2>
+		<div class="marg15">
+			<h3>{%if appuser.get_auth%}<a href="/isreport/author/{{appuser.get_auth.name|iriencode}}">{{appuser.nickname}}</a>{%else%}{{appuser.nickname}}{%endif%}</h3>
+			<div class="marg15">
+				<form action="/isreport/setting" method="POST">
+				<dl class="list">
+					<dt>名前</dt>
+					<dd><span class="red">*この項目の登録は必須です．一覧に自分の名前が無い場合は管理者まで．</span>
+						<select id="select_author" name="setting_author" onChange="author_change(this)">
+						<option value="0">N/A</option>
+							{% for author in authors %}
+							<option value="{{author.id}}" title="{{author.roman}}" {%ifequal appuser.get_auth.id author.id%}selected="selected"{%endifequal%}>{{author.name}}　:　{%ifequal author.yearth 0 %}教員{% else %}{{author.yearth}}年度生{%endifequal%}</option>
+							{% endfor %}
+						</select>
+					</dd>
+					<dt>ローマ字表記</dt>
+					<dd><span class="red">*名前 名字の並びで入力して下さい．ex)Taro DOSHISHA</span>
+						<input type="text" id="setting_roman" name="setting_roman" value="{{appuser.get_auth.roman}}"/>
+					</dd>
+					<dt>自画像</dt>
+					<dd>
+						<span class="red">*研究室での情報公開である点を踏まえて，ふさわしい画像を入力するようにして下さい．</span>
+						<input type="text" id="setting_img" name="setting_img" value='{{appuser.get_auth.img_url|default:"http://"}}'/>
+					</dd>
+					<dt>所属年度(複数選択)</dt>
+					<dd><span class="red">*在籍年度をリストから複数選択して下さい．この項目は自動更新されません．</span>
+						<select id="setting_year" name="setting_year" multiple="">
+						<option value="0">UnKnown</option>
+						{% for year in years %}
+						<option value="{{year}}" {% for auth_year in appuser.get_auth.get_years %}{% ifequal year auth_year %}selected="selected"{% endifequal %}{% endfor %} title="{{year}}年度">{{year}}年度</option>
+						{% endfor %}
+						<!-- <option value="2010" title="2010年度">2010年度</option>
+						<option value="2009" title="2009年度">2009年度</option>
+						<option value="2008" title="2008年度">2008年度</option>
+						<option value="2007" title="2007年度">2007年度</option>
+						<option value="2006" title="2006年度">2006年度</option>
+						<option value="2005" title="2005年度">2005年度</option>
+						<option value="2004" title="2004年度">2004年度</option>
+						<option value="2003" title="2003年度">2003年度</option>
+						<option value="2002" title="2002年度">2002年度</option>
+						<option value="2001" title="2001年度">2001年度</option>
+						<option value="2000" title="2000年度">2000年度</option>
+						<option value="1999" title="1999年度">1999年度</option>
+						<option value="1998" title="1998年度">1998年度</option> -->
+							<!-- {% for author in authors %}
+							<option value="{{author.id}}" title="{{author.roman}}" {%ifequal appuser.get_auth.id author.id%}selected="selected"{%endifequal%}>{{author.name}}</option>
+							{% endfor %} -->
+						</select>
+					</dd>
+					<dt>自己紹介</dt>
+					<dd>
+						<textarea id="setting_intro" name="setting_intro">{{appuser.get_auth.personal}}</textarea>
+					</dd>
+					<dd>
+						{% if not is_first %}
+							<input type="hidden" name="is_first" value="is_first"/>
+							<input type="submit" name="submit" value="登録"/>
+						{% else %}
+							<input type="submit" id="submit" name="submit" value="保存"/>
+						{% endif %}
+					</dd>
+				</dl>
+				{% csrf_token %}</form>
+			</div>
+		</div>
+		<div class="marg15">
+			<h3>My Books</h3>
+			<div class="marg15">
+				<dl class="list">
+					<dt>My Favorite</dt>
+					<dd>
+						<ul class="setting_item">
+							{% for item in favorites.get_entries %}
+							<li class="setting_column"><a href="#remove" onClick="remove_book('id={{item.id}}&amp;bookid=0')" title="このレポートを{{book.title}}から削除する">×</a>　{{item.title}}：{% for author in item.authors %}<a href="/isreport/author/{{author.name|iriencode}}" class="a_author">{{author.name}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}</li>
+							{% endfor %}
+						</ul>
+					</dd>
+					{% for book in appuser.get_books %}
+					{# <dt>ローマ字表記</dt> #}
+					<form action='/isreport/change_book_name' method='POST'>
+					<dt><input type="text" name="booktitle" class="mini" value="{{book.title}}"/></dt>
+					<dd>
+						<input type="hidden" name="bookid" value="{{book.id}}"/>
+						<label><input type="checkbox" name="isvalid" {% if book.isvalid %}checked="checked"{% endif %}/>公開設定</label>
+						<input type="submit" name="submit" value="変更"/>
+						<!-- <input type="checkbox" name="item" class="setting_item" onClick="setting_item(this)"/>{{book.title}} -->
+						<ul class="setting_item">
+						{% for item in book.get_subs.get_entries %}
+							<li class="setting_column"><a href="#remove" onClick="remove_book('id={{item.id}}&amp;bookid={{book.id}}')" title="このレポートを{{book.title}}から削除する">×</a>　<a href="{% if item.istext %}/isreport/entry/{{item.id}}{% else %}/report/{{item.path}}/isreport{{item.num}}.pdf{% endif %}" class="report_title" target="_blank">{{item.title}}</a>：{% for author in item.authors %}<a href="/isreport/author/{{author.name|iriencode}}" class="a_author">{{author.name}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}</li>
+						{% endfor %}
+						</ul>
+					</dd>
+					{% csrf_token %}</form>	
+					{%endfor%}
+				</dl>
+			</div>
+		</div>
+</div>
+{% endblock main %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/dlist.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/utils.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/form.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/inner_upload.css"/>
+</head>
+<body>
+	<div id="wrapper">
+	<form enctype="multipart/form-data" action='/isreport/ajax/upload_img' method='POST'>
+	<h1>画像アップロード</h1>
+	<div>
+	{% if file %}
+	<div class="img_div">
+		<img src="{{image_url}}{{file}}" alt="thumbnail" height="70%"></img>
+		<div class="img_div fignum">{{file}}</div>
+	</div>{% endif %}
+		<span class="red">*画像の形式は[png]でお願いします</span>
+	</div>
+		<input type='file' name='file' id="uploading">
+		<input type='hidden' name='id' value="{{entry.id}}">
+		<input type='submit' name='submit' value="アップロード">
+	{% csrf_token %}</form>
+	</div>
+	<script type="text/javascript">
+	$("img").error(function(){
+	  $(this).attr("src","http://is.doshisha.ac.jp/isapps/static/img/noimage.png");
+	  return true;
+	});
+	</script>
+</body>
+</html>

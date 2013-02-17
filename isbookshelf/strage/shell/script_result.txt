@@ -1,0 +1,16 @@
+already use number:a/a 2010.09.11 17:01:17
+OK:/Users/mmiyaji/MJ/2010/program/django/isapps/isbooks/isbookshelf/templates/isbookshelf/isdl_sample.html 2010.09.11 17:05:13
+OK:/Users/mmiyaji/MJ/2010/program/django/isapps/isbooks/isbookshelf/templates/isbookshelf/isdl_sample.html 2010.09.11 17:07:35
+OK:/Users/mmiyaji/MJ/2010/program/django/isapps/isbooks/isbookshelf/templates/isbookshelf/isdl_sample.html 2010.09.11 17:08:39
+OK:/Users/mmiyaji/MJ/2010/program/django/isapps/isbooks/isbookshelf/templates/isbookshelf/isdl_sample.html 2010.09.11 17:09:54
+input:/Users/mmiyaji/tmp/reports/isdlreport/2009/0610/002/report20090610002.html
+INTERNAL SERVER ERROR:/Users/mmiyaji/tmp/reports/isdlreport/2009/0610/002/report20090610002.html 2010.09.13 16:48:55
+input:/Users/mmiyaji/tmp/reports/isdlreport/2009/0610/008/report20090610008.html
+INTERNAL SERVER ERROR:/Users/mmiyaji/tmp/reports/isdlreport/2009/0610/008/report20090610008.html 2010.09.13 16:50:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19
+INTERNAL SERVER ERROR:authors.txt 2010.09.14 23:42:19

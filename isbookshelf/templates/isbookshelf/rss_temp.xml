@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+<title>Is Report System</title>
+<link>{{domain}}</link>
+<description>Information about IS Report System</description>
+<copyright>Copyright (C) 2010 IS Group All rights reserved.</copyright>
+<lastBuildDate>{{lastitem.show_now_pub_date}}</lastBuildDate>
+<language>ja</language>{% for item in items %}
+	<item>
+		<title>{{ item.title }}:{% for author in item.authors %}{{author.name}}{% if not forloop.last %}， {% endif %}{% endfor %}</title>	
+		<description>{{ item.abstract }}</description>
+		<link>{{domain}}/isreport/entry/{{item.id}}</link>
+		<pubDate>{{ item.show_pub_date }}</pubDate>
+	</item>{% endfor %}
+</channel>
+</rss>

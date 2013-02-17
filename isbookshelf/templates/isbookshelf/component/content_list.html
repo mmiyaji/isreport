@@ -1,0 +1,35 @@
+<dl class="list">
+  <dt>ダウンロード</dt>
+  <dd>
+    <span class="utility">{% if item.istext %}<a class="action gethtml" id="html_{{item.id}}" title="HTML形式でダウンロードする" href="/report/{{item.path}}/index.html" target="_blank">HTML</a>
+	  <a class="action getepub" id="epub_{{item.id}}" title="EPUB形式でダウンロードする" href="/isreport/zipper?id={{item.id}}"  onClick="_gaq.push(['_trackEvent', 'epub', 'download_epub','{{item.id}}_{{item.show_escaped_title}}']);">Epub</a>
+	  {% endif %}{% if item.ispdf %}<a class="action getpdf" id="pdf_{{item.id}}" title="PDF形式でダウンロードする" href="/report/{{item.path}}/isreport{{item.num}}.pdf" target="_blank" onClick="_gaq.push(['_trackEvent', 'pdf', 'download_pdf','{{item.id}}_{{item.show_escaped_title}}']);">PDF</a>{% endif %}{% if not user.is_anonymous %}<!-- ログイン中のユーザがこのエントリーをお気に入り登録しているかチェック。回りくどい実装なのでエントリー数が多くなったときどうなるかわからない -->
+	  <a class="action util_fav{% with item.get_favoritter as favter %}{% for fav in favter %}{% ifequal user.id fav.create_by.user.id %} star{% endifequal %}{% endfor %}{% endwith %}" id="fav_{{item.id}}" title="お気に入り" onClick="fav_click(this)">&nbsp;</a>
+	  
+	  <a class="action addbook" id="add_{{item.id}}" title="My Bookに追加する" onClick="addbook(this)">&nbsp;</a>
+	  <a class="action edits" id="edit_{{item.id}}" title="編集する" href="/isreport/edit_entry?target={{item.id}}">編集</a>
+	  {% if user.is_staff %}{%if not item.isdraft%}{% if not item.approval %}
+	  <a class="action approv" id="approv_{{item.id}}" title="承認する" href="/isreport/approval?target={{item.id}}">承認</a>{%else%}
+	  <a class="action deny" id="deny_{{item.id}}" title="未認証状態にする" href="/isreport/approval?target={{item.id}}&amp;deny=true">公開停止</a>{%endif%}{%endif%}{%endif%}
+	  {% if not item.ispublic %}<a class="action lock">&nbsp;</a>{% endif %}
+	  {% endif %}</span></dd>
+	<dt>公開日</dt>
+	<dd>{% if not item.ispublic %}<img alt="lock" src="{{ MEDIA_URL }}/img/lock.png" width="18"/>&nbsp;{% endif %}<time pubdate><a href="{% if item.istext %}/isreport/entry/{{item.id}}{% else %}/report/{{item.path}}/isreport{{item.num}}.pdf{% endif %}">{{item.show_publish}}</a></time></dd>
+	<dt>著者</dt>
+	<dd>{% for author in item.get_authors_order %}<a href="/isreport/author/{{author.name|iriencode}}" class="a_author">{{author.name}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}
+	</dd>{% if item.groups %}
+	<dt>研究グループ</dt>
+	<dd>
+		{% for group in item.groups %}<a href="/isreport/group/{{group.name|iriencode}}" class="report_tag">{{group.name}}</a>{% if not forloop.last %}，{% endif %}{% endfor %}
+	</dd>{% endif %}{% if item.tags %}
+	<dt>キーワード</dt>
+	<dd>
+		{% for tag in item.tags %}<a href="/isreport/tag/{{tag.name|iriencode}}" class="report_tag">{{tag.name}}</a>{% if not forloop.last %}，{% endif %}{% endfor %}
+	</dd>{% endif %}{% if item.wordss %}
+	<dt>関連ワード</dt>
+	<dd>
+		{% for word in item.get_recommend_word %}<a href="/isreport/keyword/{{word.word.name|iriencode}}" class="report_tag">{{word.word.name}}{% if user.is_staff %}[tf:{{word.tf}}, idf:{{word.idf}}]{%endif%}</a>{% if not forloop.last %}，{% endif %}{% endfor %}
+	</dd>{% endif %}{% if item.abstract %}
+	<dt>アブストラクト</dt>
+	<dd>{{item.abstract}}</dd>{% endif %}
+</dl>

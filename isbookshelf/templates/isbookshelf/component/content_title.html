@@ -1,0 +1,1 @@
+{% if not item.approval %}<span class="check">[未承認{%if item.isdraft%}/下書き{%else%}/承認待ち{%endif%}]</span> {% endif %}<a href="{% if item.istext %}/isreport/entry/{{item.id}}{% else %}/report/{{item.path}}/isreport{{item.num}}.pdf{% endif %}">{{item.title}}</a>

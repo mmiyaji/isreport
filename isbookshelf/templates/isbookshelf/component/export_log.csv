@@ -1,0 +1,18 @@
+timestamp,"{% now "r" %}"
+entry span,{{entr_span}}
+word span,{{word_span}}
+Recommend,False
+Memcached,True
+現在閲覧中のレポート,{{nentry.id}},"{{nentry.title}}"
+学習済みレポート,{{oentry.id}},"{{oentry.title}}"
+,推薦レポートID,推薦レポートTitle,類似度,主要単語1,主要単語1(TF/IDF),主要単語2,主要単語2(TF/IDF),主要単語3,主要単語3(TF/IDF),主要単語4,主要単語4(TF/IDF),主要単語5,主要単語5(TF/IDF)
+{% for n in naentry %}学習なし推薦レポート,{{n.entry.id}},"{{n.entry.title}}",{{n.similarity}},{% for rw in n.entry.get_recommend_word %}"{{rw.word.name}}",{{rw.tfidf}},{% endfor %}
+{% endfor %}{% for r in reentry %}学習有り推薦レポート,{{r.entry.id}},"{{r.entry.title}}",{{r.similarity}},{% for rw in r.entry.get_recommend_word %}"{{rw.word.name}}",{{rw.tfidf}},{% endfor %}
+{% endfor %}
+statuses,word id,word title,weight
+{% for nst in nstatuses %}現在閲覧中のレポートステータス,{{nst.word.id}},"{{nst.word.name}}",{{nst.score}}
+{% endfor %}
+{% for ost in ostatuses %}現在のユーザステータス{{ost.in_id}}_{{ost.p_id}},{{ost.word.id}},"{{ost.word.name}}",{{ost.score}}
+{% endfor %}
+{% for xst in xstatuses %}生成されたユーザステータス{{xst.in_id}}_{{xst.p_id}},{{xst.word.id}},"{{xst.word.name}}",{{xst.score}},{% for xp in xst.xpaths.paths %}{{xp}},{% endfor %}{% for xv in xst.xpaths.vals %}{{xv}},{% endfor %}
+{% endfor %}

@@ -1,0 +1,293 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>Home</h2>
+	<div class="marg15">
+	<h3>簡単な利用マニュアル</h3>
+		<div class="pad15 hovs">
+		<ul id="manual_links">
+			<li><a href="#download">ダウンロード/閲覧</a></li>
+			<li><a href="#customsearch">レポート検索</a></li>
+			<li><a href="#regist">ユーザ登録</a></li>
+			<li><a href="#upload">アップロード</a></li>
+			<li><a href="#favorite">お気に入り/My Book機能</a></li>
+			<li><a href="#etcetra">その他</a></li>
+			<li><a href="#isstyle">IS記法</a></li>
+		</ul>
+		</div>
+		<h3 id="download"><a>ダウンロード/閲覧</a></h3>
+		<div class="pad15 hovs">
+			<p>本サイトでは ISレポートをHTML・Epub（電子書籍）・PDF形式でダウンロード/閲覧することが出来ます．</p>
+			<p>レポート一覧に現れる下記のアイコンをクリックすることでダウンロード出来ます．</p>
+			<ul>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/down_html_big.png" alt="down_html_big"/>
+					<div><h3>HTML形式でダウンロード/閲覧する</h3>
+					<p class="group_item">通常，ブラウザでの閲覧にはこちらを選択して下さい．
+						レポートタイトルをクリックすることでも閲覧可能です．
+					</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/down_epub_big.png" alt="down_epub_big"/>
+					<div><h3>Epub（電子書籍）形式でダウンロード/閲覧する</h3>
+					<p class="group_item">iPadなどが採用している電子書籍フォーマットである Epub形式でダウンロード出来ます．
+						通常，閲覧には専用のビューアが必要となります．
+					</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/down_pdf_big.png" alt="down_pdf_big"/>
+					<div><h3>PDF形式でダウンロード/閲覧する</h3>
+					<p class="group_item">一部のISレポートには対応していません．
+					</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<h3 id="customsearch"><a>レポート検索</a></h3>
+		<div class="pad15 hovs">
+			<p>ISレポート検索方法は下記の通りです．</p>
+			<ul>
+				<li class="edist">
+					<h3>サイト内検索</h3>
+						<p>・検索バー</p>
+						<img src="{{MEDIA_URL}}/img/help_search.png" alt="search" class="help_img"/>
+					<p class="group_item">
+						本サイト全体をキーワード検索する場合は こちらをご利用下さい．
+						レポートの中身を検索する場合はこちらが便利ですが，最新のレポートについては検索結果に反映されない場合があります．ご了承下さい．
+						左のサイドバーに常に表示されています．
+					</p>
+					<p>・検索結果例</p>
+					<img src="{{MEDIA_URL}}/img/help_customsearch.png" alt="search_result" class="help_img"/>
+				</li>
+				<li class="edist">
+					<h3>研究グループ別検索</h3>
+						<img src="{{MEDIA_URL}}/img/help_group.png" alt="search group" class="help_img"/>
+					<p class="group_item">
+						研究グループ別にレポートを検索します．
+					</p>
+				</li>
+				<li class="edist">
+					<h3>著者別検索</h3>
+						<img src="{{MEDIA_URL}}/img/help_author.png" alt="search author" class="help_img"/>
+					<p class="group_item">
+						著者別にレポートを検索します．このページでは著者が役職別に分類されています．
+					</p>
+				</li>
+				<li class="edist">
+					<h3>年度別検索</h3>
+						<img src="{{MEDIA_URL}}/img/help_year.png" alt="search author" class="help_img"/>
+					<p class="group_item">
+						年度別にレポートを検索します．このページでは著者が所属年度別に分類されています．
+					</p>
+				</li>
+				<li class="edist">
+					<h3>タグ別検索</h3>
+						<img src="{{MEDIA_URL}}/img/help_tag.png" alt="search tag" class="help_img"/>
+					<p class="group_item">
+						レポートに付けられたタグ別にレポートを検索します．
+					</p>
+				</li>
+			</ul>
+		</div>
+		<h3 id="regist"><a>ユーザ登録</a></h3>
+		<div class="pad15 hovs">
+			<p>ISグループメンバーのみユーザ登録をすることが出来ます．ユーザ登録をすることで通常の機能に加えていくつかの機能を利用することが出来ます．</p>
+			<ul>
+				<li class="edist">
+					<p>・ユーザ登録/ログイン</p>
+					<img src="{{MEDIA_URL}}/img/help_regist.png" alt="regist" class="help_img"/>
+					<p class="group_item">
+						新規ユーザ登録時にはISグループメンバにのみ配布しているSecret Keyを入力する必要があります．
+					</p>
+				</li>
+				<li class="edist">
+					<p>・ユーザ設定</p>
+						<img src="{{MEDIA_URL}}/img/help_setting.png" alt="search group" class="help_img"/>
+					<p class="group_item">
+						新規ユーザ登録後，以下の画面にリダイレクトされるのでNameセレクトボックスから自分に該当する名前を選ぶ．
+						イメージや自己紹介の欄は任意で入力する．
+					</p>
+				</li>
+				<li class="edist">
+					<p>・未登録ユーザ</p>
+					<img src="{{MEDIA_URL}}/img/help_newreport1.png" alt="new report" class="help_img"/>
+					<p>・登録ユーザ</p>
+					<img src="{{MEDIA_URL}}/img/help_newreport.png" alt="new report" class="help_img"/>
+					<p class="group_item">
+						登録ユーザには上記の様に，アップロード･編集・Book機能などが付加される．
+					</p>
+				</li>
+			</ul>
+		</div>
+		<h3 id="upload"><a>アップロード</a> ※登録ユーザのみ</h3>
+		<div class="pad15 hovs">
+			<ul>
+				<li class="edist">
+					<p class="group_item">
+						登録したユーザのみ利用可能です．
+						アップロード時に公開/下書き保存を選択できます．公開ボタンを押した時点では最新ISレポート一覧には追加されず，管理人の承認待ち状態となります．
+						自分の作成したレポートはダッシュボードから参照することが出来ます．
+					</p>
+				</li>
+			</ul>
+		</div>
+		<h3 id="favorite"><a>お気に入り/My Book機能</a> ※登録ユーザのみ</h3>
+		<div class="pad15 hovs">
+			<ul>
+				<li class="edist">
+					<p class="group_item">
+						登録したユーザのみ利用可能です．
+						本サイトでは 複数のISレポートをまとめて一冊のEpub形式の本としてダウンロードする機能があります．
+						その機能を利用する為にはレポートをお気に入りもしくはMy Bookに登録する必要があります．
+						本の出力はサイドバーのダウンロードから行えます．
+					</p>
+				</li>
+			</ul>
+		</div>
+		<h3 id="etcetra"><a>その他</a></h3>
+		<div class="pad15 hovs">
+			<ul>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/favorite_big.png" alt="favorite_big"/>
+					<div><h3>お気に入りに追加 ※登録ユーザのみ</h3>
+					<p class="group_item">
+						登録したユーザのみ利用可能です．
+						選択したレポートをお気に入りレポートに追加します．
+					</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/add_book_big.png" alt="addbook_big"/>
+					<div><h3>My Bookに追加 ※登録ユーザのみ</h3>
+					<p class="group_item">
+						登録したユーザのみ利用可能です．
+						選択したレポートをMy Bookに追加します．
+					</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/edit_big.png" alt="edit_big"/>
+					<div><h3>編集 ※登録ユーザのみ</h3>
+					<p class="group_item">
+						登録したユーザのみ利用可能です．
+						全てのISレポートに対して登録ユーザは編集権限を持ちます．
+					</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<h3 id="isstyle"><a href="/isreport/isdlstyle">IS記法</a></h3>
+		<div class="pad15 hovs">
+			<p>IS記法はISレポート作成を補助する文章記述方式です．詳細を以下に記載します．</p>
+			<ul>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/h1_big.png" alt="h1"/>
+					<div><h3>章を追加</h3>
+					<p class="group_item">行頭に「*」で表す
+						入力) * section
+						出力) 1 section</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/h2_big.png" alt="h2"/>
+					<div><h3>節を追加</h3>
+					<p class="group_item">行頭に「**」で表す
+						入力) ** sub section
+						出力) 1.1 sub section</p>
+					</div>
+				</li>	
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/h3_big.png" alt="h3"/>
+					<div><h3>項を追加</h3>
+					<p class="group_item">行頭に「***」で表す
+						入力) *** subsub section
+						出力) 1.1.1 subsub section</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/list_big.png" alt="list"/>
+					<div><h3>番号付きリストを追加</h3>
+					<p class="group_item">行頭に「+」で表す
+						入力) + list
+						出力) 1. list</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/olist_big.png" alt="olist"/>
+					<div><h3>番号なしリストを追加</h3>
+					<p class="group_item">行頭に「-」で表す
+						入力) - list
+						出力) ・ list</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/block_big.png" alt="block"/>
+					<div><h3>引用符を追加</h3>
+					<p class="group_item">文章を「&gt;? ?&lt;」で囲む</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/table_big.png" alt="table"/>
+					<div><h3>テーブルを追加</h3>
+					<p class="group_item">「||」もしくは「|*|」で表す
+						入力) | *abc | def | ghi |
+						出力) <table class="pview_table">
+							<tr><th> abc </th><td> def </td><td> ghi </td></tr>
+						</table></p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/table_big.png" alt="table"/>
+					<div><h3>テーブルキャプション/引用記号を追加</h3>
+					<p class="group_item">文頭に「$|」でテーブルキャプション、文中で「 [ [ ] ] 」で引用記号を表す
+						入力) $| caption
+						出力) Table.1 caption
+						
+						入力) ~[[1]]を参照
+						出力) ~Table.1を参照
+						</p>
+					</div>
+				</li>
+					<li class="edist">
+					<img src="{{MEDIA_URL}}/img/images_big.png" alt="images"/>
+					<div><h3>イメージを追加</h3>
+					<img src="{{MEDIA_URL}}/img/image_prev.png" class="image_pv"/>
+					<p class="group_item">
+						イメージファイルをアップロードして、貼り付けよう
+						現在はpngファイルのみ対応
+						貼り付けボタンを押すと、イメージタグを追加する
+						文頭に「%% image1.png/300」でイメージタグを挿入する
+						/で区切る値には順に イメージファイル名、横幅を入れる
+					</p>
+					</div>
+				</li>
+				<li class="edist">
+					<img src="{{MEDIA_URL}}/img/images_big.png" alt="table"/>
+					<div><h3>イメージキャプション/引用記号を追加</h3>
+					<p class="group_item">文頭に「$%」でテーブルキャプション、文中で「 { { } } 」で引用記号を表す
+						入力) $% caption
+						出力) Fig.1 caption
+						
+						入力) ~ { { 1 } }を参照
+						出力) ~Fig.1を参照
+						</p>
+					</div>
+				</li>
+					<li class="edist">
+					<img src="{{MEDIA_URL}}/img/link_big.png" alt="link"/>
+					<div><h3>参照を追加</h3>
+					<p class="group_item">「(())」で表す
+						入力) citer((citee))
+						出力) citer*1
+						<h4>References</h4>*1: citee
+					</p>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+	</div>
+</div>
+{% endblock main %}

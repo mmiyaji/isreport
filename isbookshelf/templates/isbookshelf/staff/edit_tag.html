@@ -1,0 +1,29 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>管理者 / タグ（キーワード）編集</h2>
+		<div class="marg15">
+			<h3><a href="/isreport/tag/{{tag.name|iriencode}}">{{tag.name}}</a></h3>
+			<div class="marg15">
+				<form id="form" name="form" method="post" action="/isreport/edit_tag">
+					<dl class="list">
+						{% if createError %}
+						<p class="error">{{createError}}</p>
+						{% endif %}
+						<dt>ID</dt>
+						<dd>{{tag.id}}&nbsp;</dd>
+						<dt>名前</dt>
+						<dd><input type="text" name="name" value="{{tag.name}}"/></dd>
+						<dt>説明</dt>
+						<dd><span class="red">*入力がそのまま出力されます．(preタグ)</span>
+							<textarea name="personal" class="flexarea">{{tag.desc_me|safe}}</textarea></dd>
+						<dd>
+							<input type="hidden" name="target" value="{{tag.id}}"/>
+							<input type="submit" value="変更する"/>
+						</dd>
+					</dl>
+				{% csrf_token %}</form>
+			</div>
+		</div>
+</div>
+{% endblock main %}

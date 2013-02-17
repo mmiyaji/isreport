@@ -1,0 +1,17 @@
+<div class="image_lists">
+	{# <a onclick="book_form_cancel()" href="#close" class="close_button">×</a> #}
+		<ul class="thumbnail clearfix">
+	 	{% for file in file_list %}
+		{% ifequal file '.svn' %}
+		{% else %}
+		<li class="image_list">
+			<a href="{{image_url}}{{file}}" target="_blank"><img src="{{image_url}}{{file}}" alt="thumbnail" width="95%"></img></a><p class="imges">{{file}}　<p><input type="submit" value="図貼り付け" onClick='paste_image("{{file}}","{{forloop.counter}}")'><input type="submit" value="式貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","")'><input type="submit" value="文中貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","True")'><!-- <input type="submit" value="削除" onClick='delete_img("{{file}}","{{entry.id}}")'> --></p></p>
+		</li>
+		{% endifequal %}
+		{% endfor %}
+		</ul>
+		<br style="clear:both"/>
+</div>
+<div class="frame_submit">
+<input type="submit" value="画像ファイルアップロード" onClick="setfunc('image')"><input type="submit" value="数式作成" onClick="setfunc('numeric')"><input type="submit" value="キャンセル" onClick="hide_curtain()"></div>
+</div>

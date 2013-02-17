@@ -1,0 +1,34 @@
+#inner-details {
+  font-size:12px;
+}
+
+span.close {
+	color:#FF5555;
+	cursor:pointer;
+	font-weight:bold;
+	margin-left:3px;
+}
+
+span.name {
+	cursor: pointer;
+	color:#555;
+	font-size:0.8em;
+}
+span.name:hover {
+	text-decoration:underline;
+	color:navy;
+/*	font-size:120%;*/
+}
+
+/*TOOLTIPS*/
+.tip {
+   text-align: left;
+   width:auto;
+   max-width:500px;
+}
+
+.tip-title {
+  font-size: 11px;
+  text-align:center;
+  margin-bottom:2px;
+}

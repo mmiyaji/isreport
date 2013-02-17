@@ -1,0 +1,153 @@
+<?xml version="1.0" ?>
+<rss version="2.0">
+<channel>
+<title>Is Report System</title>
+<link>http://is.doshisha.ac.jp</link>
+<description>Information about IS Report System</description>
+<copyright>Copyright (C) 2010 IS Group All rights reserved.</copyright>
+<lastBuildDate>Fri, 03 Dec 2010 20:14:26 +0900</lastBuildDate>
+<language>ja</language>
+	<item>
+		<title>束論:廣安 知之</title>	
+		<description>束論を利用するとコンセプトの構造の解析と理解を行うことが可能となる。</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1452</link>
+		<pubDate>Fri, 17 Sep 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>フレームワーク勉強会:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 宮地 正大</title>	
+		<description>本ゼミでは，PythonによるWebアプリケーションフレームワークであるDjangoを用いて，フレームワークが具体的にはどういったものであるかに触れ，またそれを導入することによるメリットや簡便化される機能などを学ぶ．</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1449</link>
+		<pubDate>Thu, 16 Sep 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>Windows7とAzure:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 宮地 正大， 戸松 祐太</title>	
+		<description>本レポートでは今秋 Microsoftより発売予定であるWindows7及びAzureについてまとめる</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1463</link>
+		<pubDate>Fri, 01 May 2009 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>ストリーム暗号:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 伊藤 博高， 山中 亮典</title>	
+		<description>本勉強会では，ストリーム暗号とはどういうものかについて学ぶ．</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1455</link>
+		<pubDate>Fri, 17 Sep 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>iGA被験者実験の手引き:廣安 知之， 三木 光範， 吉見 真聡， 田中 美里</title>	
+		<description>本稿では，対話型遺伝的アルゴリズムにおいて，提案手法の有効性を評価するための被験者実験を行う際，どのように実験システム，アンケートを作成するべきか，実用性を重視したマニュアルである．なお，本マニュアルは対話型遺伝的アルゴリズムの被験者実験を行うものが執筆，また参考にするものである．また，今後も修正を必要とするマニュアルであることを留意されたい．
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1522</link>
+		<pubDate>Mon, 25 Oct 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>電子書籍:廣安 知之， 三木 光範， 横内 久猛， 福原 理宏</title>	
+		<description>Kindle や iPad の登場により電子書籍が大きな注目を集めている.この電子書籍の研究は古くから行われていたが,技術不足や,紙媒体の代わりとして使用するメリットが少なかったため,2000 年代半ばまで成功した事例は数少ない.しかし,近年の情報技術の発展を背景に,電子書籍は新たなメディアとして確立しつつある.また,市場規模が拡大していく中で,権利問題など新たな課題も生まれている. 本稿では,電子書籍に使用されている技術を述べた上で,電子書籍が解決しなければならない課題や,今後の展望について考察する.</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1465</link>
+		<pubDate>Tue, 28 Sep 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>ファジィ理論の基礎1：ファジィ集合論とファジィ数理       :廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 田中 美里</title>	
+		<description>ファジィ理論は, 実社会や人間の諸活動に存在する曖昧さを数量的に処理する理論であり, 複雑なシステムの制御系を適切に構成できることが知られている. 
+本レポートではファジィ理論の基礎について述べる. ファジィ理論の原理であるファジィ集合論について述べた後, ファジィ集合論に基づく数理であるファジィ数, ファジィ関係について述べる.
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1153</link>
+		<pubDate>Sat, 20 Feb 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        【IT用語】燃料電池　〜地球の運命を握る夢の発電装置〜       :廣安 知之， 三木 光範， 後藤 和宏， 吉井 健吾</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1519</link>
+		<pubDate>Mon, 19 Sep 2005 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        MeCabの基礎       :廣安 知之， 三木 光範， 宮崎 真</title>	
+		<description>
+
+        形態素解析ツールとしてはChaSenが有名であるが，MeCabでは解析精度は，Chasenと変わらないにも
+    かかわらず，平均的にChaSenの3-4倍のスピードで動作することが報告されている．
+    本報告では，そのMeCabの特徴，利用方法(UNIX)について説明する．
+       
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1518</link>
+		<pubDate>Wed, 02 Nov 2005 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        【文献調査】Analyzing concerns of people using Weblog articles and real world temporal data       :廣安 知之， 三木 光範， 宮崎 真</title>	
+		<description>
+
+        本報告では，Weblogの記事を用いた社会事象に関する関心動向の分析を行っている
+    Analyzing concerns of people using Weblog articles and real world temporal data
+    についての文献調査を行う．なお，本報告では全文を要約せず，前半で述べられている
+    社会的関心の分類までを述べる．
+        
+        調査の結果，Weblog上での情報発信活動の活発化に伴い，Weblogを分析することで，人々の社会問題についての
+    反応を把握できることがわかった．今後は実データを元にした詳細な調査が必要である．
+       
+
+
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1517</link>
+		<pubDate>Thu, 06 Oct 2005 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        【IT用語】Java 5.0〜止まらぬ進化, オブジェクト指向の更なる完全性〜       :廣安 知之， 三木 光範， 平岩 健一郎， 佐藤 史隆</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1516</link>
+		<pubDate>Fri, 14 Oct 2005 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        重要温度領域の遷移についての検討       :廣安 知之， 三木 光範， 米澤 基</title>	
+		<description>
+
+        本報告では，重要温度領域が解の状態によってどのように変化するか検討する．
+        
+         小さいeil51と大きいeil51を組み合わせた問題
+        
+        の中には組み合わせ方によっては重要温度領域が二つ現れる問題がある．言い換えれば，多くの場合，重要温度領域は一つしかでない．しかし，そのような問題においても，いったん重要温度領域でアニーリングした後，その得られた解の温度とエネルギー値の関係を調べると，重要温度領域が別の領域に現れることがわかった．さらに，一見，重要温度領域とみられない温度で一定時間アニーリングすることが後に良好な解を得ることにつながる場合もある．この結果はSAではやはり高温から低温へアニーリングすることが必要なことを示している．
+       
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1515</link>
+		<pubDate>Mon, 11 Nov 2002 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        iSIGHTのSAについての調査         :廣安 知之， 三木 光範， 米澤 基</title>	
+		<description>
+       本レポートは，エンジニアス・ジャパン株式会社
+       
+        [1]
+       
+       が提供する汎用最適支援ソフトウェアiSIGHT（以下iSIGHT）のSAの調査報告である．実験を行った結果，iSIGTのSAの性能は非常に良かったが，そのメカニズムや，出力データの内容の解析には時間がかかる思われる．
+       
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1514</link>
+		<pubDate>Mon, 25 Nov 2002 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        eil51における次状態のエネルギー分布についての検討       :廣安 知之， 三木 光範， 米澤 基</title>	
+		<description>
+       本報告では，eil51におけるある状態から次状態を発生させたときのエネルギー値の分布について検証する．さらに，
+       
+        小さいeil51と大きいeil51を組み合わせた問題
+       
+       における次状態のエネルギー値の分布を調べる．その結果，分布の傾向は異なるものとなった．
+      </description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1513</link>
+		<pubDate>Mon, 11 Nov 2002 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>        重要温度領域を複数持つ問題における次状態のエネルギー分布       :廣安 知之， 三木 光範， 米澤 基</title>	
+		<description>
+       本報告では，重要温度領域を複数持つ問題
+       
+        [2][3]
+       
+       において，初期状態から次状態を発生させたときのエネルギー差の分布について述べたものである．実験より得られたエネルギー分布は，重要温度領域を一つしか持たない問題(eil51およびeil76
+       
+        [1]
+       
+       )とはかなり異なったものとなった．
+      </description>
+		<link>http://is.doshisha.ac.jp/isreport/contents?entry=1512</link>
+		<pubDate>Mon, 25 Nov 2002 00:00:00 +0900</pubDate>
+	</item>
+</channel>
+</rss>

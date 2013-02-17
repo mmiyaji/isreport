@@ -1,0 +1,22 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>研究グループ紹介</h2>
+	<div class="marg15">
+		{% for item in items %}{% include "isbookshelf/component/group_short.html" %}{% endfor %}
+		{# {% for item in new_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %} #}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% if user.is_staff %}<div class="content_section admin_only">
+	<h2>管理者 / 研究グループ新規作成</h2>
+	<div class="marg15">
+		<form id="form" name="form" method="post" action="/isreport/create_group">
+			<dl class="list">
+				{% include "isbookshelf/component/edit_group_short.html" %}
+				<dd><input type="submit" value="作成する"/><input type="reset" value="キャンセル"/></dd>
+			</dl>
+		{% csrf_token %}</form>
+	</div>
+</div>{%endif%}
+{% endblock main %}

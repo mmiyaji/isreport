@@ -1,0 +1,15 @@
+<div class="hovs clearfix hei180">
+<h3 class="report_title">{{auths.rank}}</h3>
+{% for item in auths.authors %}
+<ul class="mini_list">
+	<li class="marg15">
+		{% if user.is_staff %}<span class="utility">
+			<a class="action edits" id="author_{{item.id}}" title="編集する" href="/isreport/edit_author?target={{item.id}}">編集</a>
+			<!-- <a class="action util_etc" id="etc_{{item.id}}" title="コンテンツを削除する">　</a> -->
+		</span>{% endif %}
+		<a href="/isreport/author/{{item.name|iriencode}}">{{item.name}}<br />{{item.roman|default:"N/A"}}</a>
+	</li>
+</ul>
+{% endfor %}
+<div class="clearfix"></div>
+</div>

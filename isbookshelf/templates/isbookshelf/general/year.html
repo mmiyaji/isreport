@@ -1,0 +1,17 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>ISレポートアーカイブ ({{year}}年度)</h2>
+	<div class="marg15">
+		{%if items%}
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+		{%else%}
+		<p>
+			{{year}}年度のレポートはありません．
+		</p>
+		{%endif%}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% endblock main %}

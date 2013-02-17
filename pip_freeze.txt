@@ -1,0 +1,7 @@
+BeautifulSoup==3.2.1
+Django==1.4.3
+django-debug-toolbar==0.9.4
+gdata==2.0.17
+networkx==1.7
+pysqlite==2.6.3
+simplejson==3.0.7

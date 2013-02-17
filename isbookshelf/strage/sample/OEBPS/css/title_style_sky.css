@@ -1,0 +1,39 @@
+/* Style Sheet */
+/* This defines styles and classes used in the book */
+/*body { margin-left: 5%; margin-right: 5%; margin-top: 5%; margin-bottom: 5%; text-align: justify; }*/
+*{margin:0;padding:0}
+pre { font-size: x-small; }
+h1 { text-align: center; }
+h2 { text-align: center; }
+h3 { text-align: center; }
+h4 { text-align: center; }
+h5 { text-align: center; }
+h6 { text-align: center; }
+
+#wrapper{
+	position:absolute;
+	top:0;
+	bottom:0;
+	width:100%;
+/*	background-color:#006;*/
+}
+#content{
+	margin:100px;
+	background-color:white;
+	padding:50px;
+}
+
+.CI {
+    text-align:center;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    }
+.center   {text-align: center;}
+.smcap    {font-variant: small-caps;}
+.u        {text-decoration: underline;}
+.bold     {font-weight: bold;}
+
+/* added by abun */
+th, td { padding: 0.1em 0.2em; background: lightgrey; }
+th { white-space: nowrap; }

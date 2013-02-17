@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.w3.org/2000/08/w3c-synd/style.css" type="text/css"?>
+<rss version="2.0">
+<channel>
+<title>IS Report System</title>
+<link>{{domain}}</link>
+<description>Information about IS Report System</description>
+<copyright>Copyright (C) {% now "Y" %} MISL All rights reserved.</copyright>
+<webMaster>report@is.doshisha.ac.jp</webMaster>
+<lastBuildDate>{{lastitem.show_now_pub_date}}</lastBuildDate>
+<language>ja</language>{% for item in items %}
+	<item>
+		<title>{{ item.title }}:{% for author in item.get_authors_order %}{{author.name}}{% if not forloop.last %}， {% endif %}{% endfor %}</title>	
+		<description>{{ item.abstract }}</description>
+		<link>{{domain}}/isreport/entry/{{item.id}}</link>
+		<pubDate>{{ item.show_pub_date }}</pubDate>
+	</item>{% endfor %}
+</channel>
+</rss>

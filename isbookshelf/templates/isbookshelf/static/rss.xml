@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.w3.org/2000/08/w3c-synd/style.css" type="text/css"?>
+<rss version="2.0">
+<channel>
+<title>IS Report System</title>
+<link>http://is.doshisha.ac.jp</link>
+<description>Information about IS Report System</description>
+<copyright>Copyright (C) 2011 MISL All rights reserved.</copyright>
+<webMaster>report@is.doshisha.ac.jp</webMaster>
+<lastBuildDate></lastBuildDate>
+<language>ja</language>
+	<item>
+		<title>SLR (Sparse Logistic Regression):田中 美里， 廣安 知之， 三木 光範</title>	
+		<description>本報告では，SLR(Sparse Logistic Regression)について調査した．
+SLRはロジスティック回帰分析にベイズ推定による拡張を行うことで，得られたデータから観測変数に対する影響の弱い観測変数を削除する手法である．
+</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1583</link>
+		<pubDate>Fri, 30 Sep 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>文献調査リスト：functional Magnetic Resonance Imaging:田中 美里， 廣安 知之， 三木 光範， 吉見 真聡</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1572</link>
+		<pubDate>Wed, 03 Aug 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>文献リスト : IECにおける評価特性モデル:米田 有佑， 廣安 知之， 横内 久猛， 吉見 真聡</title>	
+		<description>対話型進化計算におけるユーザの評価モデルを構築する手法についての文献リストを作成した。
+ユーザの評価モデルを構築する手法には、Fuzzy論理、遺伝的プログラミング（Genetic Programming：GP）、ニューラルネットワーク、サポートベクターマシンを用いた手法が挙げられる。</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1567</link>
+		<pubDate>Wed, 08 Jun 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>変調方式を中心とした携帯電話の基礎:林 貴之， 南谷 祥之， 廣安 知之， 横内 久猛</title>	
+		<description>携帯電話が無線によって通信を行う際に用いられている背景には，変調という信号伝達技術が利用されている．
+本報告では，携帯電話の通信経路を述べた後，変調方式の概要，基本的な変調方式および現在使用されている携帯電話の変調方式について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1565</link>
+		<pubDate>Tue, 31 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>携帯電話の行方:上堀 聖史， 山口 浩明， 廣安 知之， 横内 久猛</title>	
+		<description>本稿では，携帯電話の行方について述べる.</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1562</link>
+		<pubDate>Sat, 28 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>GPGPUの基礎と行方【スマートフォン戦争】:加藤 真輝， 米田 有佑， 廣安 知之， 横内 久猛</title>	
+		<description>本稿ではGPGPUの基礎と，スマートフォンの関わりについて述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1561</link>
+		<pubDate>Wed, 18 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>高速汎用データ伝送技術Thunderbolt:藤井 亮助， 山中 亮典， 廣安 知之， 横内 久猛</title>	
+		<description>2011年にIntelから発売された新型インターフェイスThunderboltについて論じる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1559</link>
+		<pubDate>Tue, 17 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>Google HealthとMcirosoft HealthVault:丸尾 亜希， 大西 佑奈， 廣安 知之， 横内 久猛</title>	
+		<description>医療のIT化を行うことにより，予防の医学の観点からこの問題の解決になる．医療システムの仕組みには，EHR（electronic health record）とPHR（personal health record）が挙げられる．これらの代表的サービスとしてGoogleとMicrosoftの2社が競合しており，それぞれGoog HealthとMicrosoft HealthVaultという一般ユーザ向けWEBサイトを開発している．本稿ではこの2つのサイトに焦点を当て調査した．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1560</link>
+		<pubDate>Tue, 17 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>手術支援ロボット【 「da Vinci」を始めとする手術支援ロボット】:福島 亜梨花， 福原 理宏， 廣安 知之， 横内 久猛</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1556</link>
+		<pubDate>Fri, 13 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>CPUの行方 Sandy BridgeとBulldozer:杉野 嘉紀， 西井 琢真， 廣安 知之， 横内 久猛</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1554</link>
+		<pubDate>Thu, 12 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>次世代モニタ技術と医療用ディスプレイ:星野 雄地， 宮部 洋太， 廣安 知之， 横内 久猛</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1555</link>
+		<pubDate>Thu, 12 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>fMRI (functional Magnetic Resonance Imaging):大堀 裕一， 田中 美里， 廣安 知之， 横内 久猛</title>	
+		<description>fMRIとは，MRI装置を利用して脳の血流量の変化を検出する脳機能イメージング法である．その主な特徴としては，空間分解能に優れる，非侵襲的であるという点が挙げられる．本稿では，ｆMRIの概要，特徴，原理，今後の課題などについて述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1552</link>
+		<pubDate>Wed, 11 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>Smith Waterman法のアルゴリズム:廣安 知之， 西井 琢真， 吉見 真聡</title>	
+		<description>ここでは，バイオインフォマティクスの分野で広く用いられている文字列検索アルゴリズムであるSmith Waterman アルゴリズム(SW法)について説明する．特徴としては，GPUを用いたライブラリが豊富であり非常に高速な探索が可能であることが挙げられる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1550</link>
+		<pubDate>Fri, 06 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>CPUの基礎:大山 亮， 横田 山都， 廣安 知之， 横内 久猛</title>	
+		<description>本稿では，CPUの基礎内容について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1549</link>
+		<pubDate>Tue, 03 May 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>原子力発電所の技術:布川 将来人， 宮地 正大， 廣安 知之， 横内 久猛</title>	
+		<description>本稿では，原子力発電のメリット・デメリット，原子炉の構造，原子炉の主な種類，原子力発電所の安全対策など原子力発電所について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1547</link>
+		<pubDate>Thu, 28 Apr 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>SSD(Solid State Drive):山里 真由， 田中 美里， 廣安 知之， 横内 久猛</title>	
+		<description></description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1548</link>
+		<pubDate>Thu, 28 Apr 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>病理画像診断支援システムの基礎:廣安 知之， 三木 光範， 山口 浩明</title>	
+		<description>本稿では，病理画像診断支援システムの基礎について述べる．第1章では，病理画像診断に用いられる病理画像について，第2，3章では病理画像診断支援システムについて述べる．そして第4章で本研究室で扱っている口腔癌について述べ，最後に術前補助療法について第5章で述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1544</link>
+		<pubDate>Tue, 19 Apr 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>Rの基礎:田中 美里， 廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛</title>	
+		<description>本稿では，統計解析を目的としたインタプリタ言語，およびその開発実行環境であるRの基礎的な使用法について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1566</link>
+		<pubDate>Mon, 07 Mar 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>多目的GA手法（VEGA，NSGA-II，SPEA2）:小林 祐介， 野田 徹， 本田 和麻， 廣安 知之， 三木 光範， 吉見 真聡</title>	
+		<description>本稿では，多目的GA手法のVEGA，NSGA-II，SPEA-IIについて述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1541</link>
+		<pubDate>Thu, 10 Feb 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>多目的最適化における評価指標:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 小林 祐介， 野田 徹， 本田 和麻</title>	
+		<description>本稿では，Joshua D. Knowlesらの「A Tutorial on the Performance Assessment of Stochastic Multiobjective Optimizers」をもとに，パレート優越の定義をもとにした評価手法を紹介し，それらの利用法について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1540</link>
+		<pubDate>Thu, 03 Feb 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>光トポグラフィ統計手法ゼミ【正規性の検定】:西井 琢真， 廣安 知之， 横内 久猛</title>	
+		<description>光トポグラフィのデータを統計解析する際,母集団の特性を見極め,パラメトリック検定, ノンパラメトリック検定といった手法を使い分けることが求められている.そのためには,まず母集団 が正規分布するかどうかを調べる必要がある.本稿では,正規性における適合度検定について学ぶ.</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1538</link>
+		<pubDate>Mon, 31 Jan 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>多目的最適化の基礎:廣安 知之， 三木 光範， 小林 祐介， 野田 徹， 本田 和麻</title>	
+		<description>複数の判断基準を同時に考慮し最適化を行う多目的最適化の基礎について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1536</link>
+		<pubDate>Mon, 24 Jan 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>多目的遺伝的アルゴリズムの基礎:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 小林 祐介， 野田 徹， 本田 和麻</title>	
+		<description>多目的最適化問題を解くために多点探索であるGAの手法を適用した多目的遺伝的アルゴリズムの基礎について述べる．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1537</link>
+		<pubDate>Mon, 24 Jan 2011 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>文献リスト : ハイブリッド型GA:廣安 知之， 横内 久猛， 宮部 洋太</title>	
+		<description>他の最適化手法を組み合わせたハイブリッド型GAについて</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1534</link>
+		<pubDate>Fri, 24 Dec 2010 00:00:00 +0900</pubDate>
+	</item>
+	<item>
+		<title>Matplotlibを用いたグラフの描画について:廣安 知之， 三木 光範， 吉見 真聡， 横内 久猛， 田辺 竜也</title>	
+		<description>光トポグラフィでは大量のデータを扱う．それらのデータから直感的に理解しやすいグラフを作成することは，聴講者に実験の結果を明確に伝え，また実験者本人にとってもデータ解析の手助けとなる点で重要である．本ゼミでは，Pythonの描画ライブラリであるMatplotlibを用いたグラフの作成について学ぶ．</description>
+		<link>http://is.doshisha.ac.jp/isreport/entry/1532</link>
+		<pubDate>Wed, 01 Dec 2010 00:00:00 +0900</pubDate>
+	</item>
+</channel>
+</rss>

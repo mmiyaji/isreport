@@ -1,0 +1,74 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2 class="report_title">{{deb}}{% include "isbookshelf/component/content_title.html" %}</h2>
+	<div class="marg15">
+	{% include "isbookshelf/component/content_list.html" %}
+	<input type="hidden" id="entry_ids" name="id" value="{{item.id}}">
+	<input type="hidden" id="dirpath" name="dirpath" value="{{item.path}}">
+	<textarea class="flexarea" id="report_org_html" name="original_txt" readonly  style="display:none;">{%if content_html%}{{content_html}}{%else%}{# {% include "isbookshelf/component/report_sample.html" %} #}{%endif%}</textarea>
+	{%if not user.is_anonymous%}<h3><a href="#original_txt" onClick="show_org()">&gt;&gt;オリジナルのテキストを表示</a></h3>{%endif%}
+	<div class="report_content" id="report_html">
+		{% if trans %}
+			<img alt="now loading" src="{{MEDIA_URL}}/img/ajax-loader-sm.gif" /><span class="red">テキストの変換中です</span>
+			<a href="/report/{{item.path}}/index.html">
+				&gt;別ページで閲覧する
+			</a>
+		{% else %}{% if redirect %}
+			<h2><a class="action gethtml" id="html_{{item.id}}" title="HTML形式でダウンロードする" href="/report/{{item.path}}/index.html" target="_blank">別ページで閲覧する</a></h2>
+			<iframe
+				id="frameblock"
+				src="/report/{{item.path}}/index.html"
+				width="100%"
+				height="100%"
+				scrolling="no"
+				align="top"
+				frameborder="0"
+				onload="iFrameHeight()">
+				iframe対応ブラウザでのみ表示可能です
+			</iframe>
+			{%else%}{{htmls|safe}}{% endif %}{% endif %}
+	</div>
+	{# {% if recom_items %} #}
+	<div class="report_content relation" id="recom_report">
+		<h2>関連レポート:</h2>
+		<img alt="loading" src="{{ MEDIA_URL }}img/ajax_load.gif">
+		{# <ul> #}
+		{# {% for recom_item in recom_items %} #}
+		{# <li><a href="/isreport/entry/{{recom_item.id}}">{{recom_item.title}}</a></li>{% endfor %} #}
+		{# </ul> #}
+	</div>
+	{# {% endif %} #}
+	{% if item.get_recommend_word %}
+	{# <div class="relation" id="recom_report"> #}
+	{# 	<h2>関連レポート:</h2> #}
+	{# 	<img alt="loading" src="{{ MEDIA_URL }}img/ajax_load.gif"> #}
+	{# </div> #}
+	<div class="report_content relation" id="recom_word">
+		<h2>関連キーワード:</h2>
+		<ul>
+		{% for recom_w in item.get_recommend_word %}
+			<li><a href="/isreport/keyword/{{recom_w.word.name}}">{{recom_w.word.name}}</a></li>{% endfor %}
+		</ul>
+	</div>
+	{% endif %}
+</div>
+</div>
+<div class="content_section">
+	<h2>Facebook Comments:</h2>
+	<div id="fb-comment-root"><script src="http://connect.facebook.net/en_US/all.js#appId=209781025755513&amp;xfbml=1"></script></div>
+	<script type="text/javascript">
+		$("#fb-comment-root").after('<fb:comments id="fb_comment" href="http://is.doshisha.ac.jp'+location.pathname+'" width="630" notify="true"></fb:comments>');
+	</script>
+</div>
+<script>
+<!--
+window.onload = function(){
+	{% if trans %}
+	init_content();
+	{% endif %}
+	load_recommend({{item.id}});
+};
+//-->
+</script>
+{% endblock main %}

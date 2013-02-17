@@ -1,0 +1,111 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>レポート作成</h2>
+	<div class="marg15">
+		{% if msg %}
+			<p class="check">{{msg}}</p>
+		{% endif %}
+	{% if appuser %}
+		{% if not error %}
+			{% ifequal error 1 %}<p class="check">すでに登録済みのISレポートです。レポート番号をご確認下さい。</p>{% endifequal %}
+			{% ifequal error 2 %}<p class="check">壊れたHTMLタグが含まれています。</p>{% endifequal %}
+		{% endif %}
+		{# <h3>Books</h3> #}
+		{# <div class="marg15"> #}
+			<form enctype="multipart/form-data" action='/isreport/{% if edit_mode %}edit_entry{% else %}upload_form{% endif %}' method='POST' {% if not edit_mode %}onsubmit="return check_submit2(event);"{% endif %}>
+				{% if loginError %}
+				<p class="red">{{loginError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>公開設定</dt>
+					<dd>
+						{% if edit_mode %}
+						<label>{% if not entry.ispublic %}内部公開向け資料（ログイン時にのみ閲覧可になります）{% else %}外部公開資料{% endif %}</label>
+						{% else %}
+						<span class="red">*公開レベルは後から変更できません</span><br />
+						<label><input type="checkbox" name="private" class="setting_item"/>内部公開向け資料（ログイン時にのみ閲覧可になります）</label>
+						{% endif %}
+					</dd>
+					<dt>レポート No.</dt>
+					<dd>
+						{% if edit_mode %}
+						<label>{{entry.num}}</label>
+						{% else %}
+						<span class="red">*レポートNo.は後から変更できません．また，同一番号の登録は出来ません．</span><br />
+						<label><input type='text' name='number' value='{% if entry %}{{entry.num}}{% else %}{% now "Y" %}{{appuser.get_ids}}{{appuser.get_numbers}}{% endif %}' id="p_number">
+						</label>
+						{% endif %}
+					<input type='hidden' name='dirpath' value="{{dirpath}}">
+					</dd>
+					<dt>レポートタイトル</dt>
+					<dd><input type='text' name='title' value="{{entry.title}}" id="p_title"></dd>
+					<dt>著者</dt>
+					<dd><span class="red">*第一著者に自分を入力．第二著者以降は共著者もしくは指導教員を選択すること</span>
+						<ol class="author_ol">
+						{% if entry.authors %}
+						{% for auth in entry.get_authors_order %}
+						<li>
+						<select name="authors" id="authors_{{entry.id}}">
+							{% for author in authors %}
+							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}}　：　{% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
+						</select><a href="javascript:void(0)" onclick="delete_author(this)">×</a></li>{% if forloop.last %}<a href="javascript:void(0)" id="add_author" onclick="select_author()">著者を追加する</a>{% endif %}
+						{% endfor %}
+						{% else %}
+						<li>
+						<select name="authors" id="authors_{{entry.id}}">
+							{% for author in authors %}
+							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}}　：　{% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
+						</select><a href="javascript:void(0)" onclick="delete_author(this)">×</a></li><a href="javascript:void(0)" id="add_author" onclick="select_author()">著者を追加する</a>
+						{% endif %}
+						</ol>
+					</dd>
+					<dt>グループ</dt>
+					<dd>
+						<span class="red">*下のリストから適切なグループを選択してください．複数選択可能</span>
+						<p id="entry_groups">&nbsp;{% for group in entry.groups %}{{group.name}}{% if not forloop.last %}，{% endif %}{% endfor %}</p>
+						<select name="groups" multiple="" size="5" id="groups_{{entry.id}}" onChange="groups_change(this)">
+							{% for group in groups %}
+							<option id="group_{{group.id}}" title="{{group.name}}" value="{{group.id}}">{{group.name}}</option>{% endfor %}
+						</select>
+					</dd>
+					<dt>タグ（キーワード）</dt>
+					<dd><span class="red">*半角コンマ(,)区切りで自由に入力してください．下のリストから選ぶことで自動挿入もできます．</span>
+						<input type="text" name="tags" id="entry_tags" value="{% for tag in entry.tags %}{{tag.name}},{% endfor %}" /></dd>
+					<dd><select name="tag_list" multiple="" size="5" id="tags_{{entry.id}}" onChange="tags_change(this)">
+						{% for tag in tags %}
+						{% ifequal tag.count_me 0 %}
+						{% else %}
+						<option id="tag_{{tag.id}}" title="{{tag.name}}" value="{{tag.id}}" {% for ta in entry.tags %}{% ifequal tag.id ta.id %}selected="selected"{% endifequal %}{% endfor %}>{{tag.name}}</option>
+						{% endifequal %}
+						{% endfor %}
+						</select>
+					</dd>
+					<dt>公開日</dt>
+					<dd>
+						{% if edit_mode %}
+						<label>{{entry.get_publish}}</label>
+						{% else %}
+						<span class="red">*公開日設定は後から変更できません．</span><br />
+						<input type='text' name='date' value='{% if entry.date %}{% for date in entry.date %}{{date}}{% cycle "年" "月" "日" %}{% endfor %}{% else %}{% now "Y年n月j日" %}{% endif %}' id="p_date">
+						{% endif %}
+						</dd>
+					<dt>アブストラクト</dt>
+					<dd><span class="red">*出来る限り入力してください．検索インデックスが作られます．最大1000文字</span>
+						<textarea name='abstract' class='flexarea' cols="50" rows="5"  id="p_abstract" >{{entry.abstract}}</textarea>
+					</dd>
+					<dt></dt>
+					<dd>
+						<input type="hidden" name="target" value="{{entry.id}}"/>
+						<input type="submit" id="set_subs" value="本文を編集"/>
+					</dd>
+				</dl>
+			{% csrf_token %}</form>
+		{% else %}
+		<span class="red">
+			ユーザー設定を見直して下さい．
+		</span>
+		{% endif %}
+	</div>
+</div>
+{% endblock main %}

@@ -1,0 +1,24 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	{%for item in contents_items%}
+	<h2 class="report_title">{% include "isbookshelf/component/content_title.html" %}</h2>
+	<div class="marg15">
+	{% include "isbookshelf/component/content_list.html" %}
+	<input type="hidden" id="entry_ids" name="id" value="{{item.id}}">
+	<input type="hidden" id="dirpath" name="dirpath" value="{{item.path}}">
+	<textarea class="flexarea" id="report_org_html" name="original_txt" readonly  style="display:none;">{%if content_html%}{{content_html}}{%else%}{% include "isbookshelf/component/report_sample.html" %}{%endif%}</textarea>
+	{%if not user.is_anonymous%}<h3><a href="#original_txt" onClick="show_org()">&gt;&gt;オリジナルのテキストを表示</a></h3>{%endif%}
+	<div class="report_content" id="report_html">
+		<img alt="now loading" src="{{MEDIA_URL}}/img/ajax-loader-sm.gif" /><span class="red">テキストの変換中です</span>
+		<a href="/report/{{item.path}}/index.html">
+			&gt;別ページで閲覧する
+		</a>
+	</div>
+</div>
+{%endfor%}
+</div>
+<script>
+window.onload = init_content;
+</script>
+{% endblock main %}

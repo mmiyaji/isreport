@@ -1,0 +1,20 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<div class="marg15">
+		<form id="form" name="form" method="post" action="/isreport/edit_renew">
+			<dl class="list">
+				<dt>トップページ表示用</dt>
+				<dd><span class="red">*入力したHTMLタグが反映されます．(被preタグ)</span>
+					<textarea name="top_soup" class="flexarea">{% include "isbookshelf/static/top_renew.html" %}</textarea></dd>
+				<dt>お知らせ詳細</dt>
+				<dd><span class="red">*入力したHTMLタグが反映されます．(被preタグ)</span>
+					<textarea name="soup" class="flexarea">{% include "isbookshelf/static/renew.html" %}</textarea></dd>
+				<dd>
+					<input type="submit" value="変更する"/>
+				</dd>
+			</dl>
+		{% csrf_token %}</form>
+	</div>
+</div>
+{% endblock main %}

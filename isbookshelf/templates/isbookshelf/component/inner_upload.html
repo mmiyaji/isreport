@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> 
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ MEDIA_URL }}js/dnd.js"></script>
+	<link type="text/css" rel="stylesheet" href="{{ MEDIA_URL }}css/inner_upload.css"/>
+</head>
+<body>
+	<div id="wrapper">
+	<form enctype="multipart/form-data" action='/isreport/ajax/upload_img' method='POST' onsubmit="return check_file(this);">
+	<p>Image File：<input type='file' name='file' id="uploading">
+					<input type='hidden' name='id' value="{{entry.id}}">
+					<input type='submit' name='submit' value="アップロード">
+	</p>
+	{% csrf_token %}</form>
+	{% if file %}
+	<div class="img_div">
+		<img src="{{image_url}}{{file}}" alt="thumbnail" height="50%"></img>
+		<div class="img_div fignum">{{file}}</div>
+	</div>
+	{% else %}
+	<div class="img_div">
+		<!-- <div id="dad">Drag and Drop HERE</div>
+		<div id="outputImages" style="display: none">
+			アップロードはまだ出来ません笑
+		</div> -->
+	</div>
+	{% endif %}
+	</div>
+	<script type="text/javascript">
+	$("img").error(function(){
+	  $(this).attr("src","http://is.doshisha.ac.jp/isapps/static/img/noimage.png");
+	  // $(this).hide();
+	  // alert("Not Found");
+	  return true;
+	});
+	</script>
+	
+</body>
+</html>

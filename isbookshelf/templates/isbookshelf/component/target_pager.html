@@ -1,0 +1,7 @@
+<div class="pager marg15 clearfix autopagerize_insert_before">
+	<ul class="paging">{% for page in page_list %}{% ifequal page pages.now_page %}
+		<li class="active"><a>{{page}}</a></li>{% else %}
+		<li><a href="/isreport/{%if target_url%}{{target_url}}?{%else%}category?target={{target}}{%endif%}{%if para%}{{para|iriencode}}{%endif%}{%if year%}&amp;year={{year}}{%endif%}&amp;page={{page}}">{{page}}</a></li>{% endifequal %}{% endfor %}
+	</ul>
+	<div class="clearfix">{% include "isbookshelf/component/min_pager.html" %}</div>
+</div>

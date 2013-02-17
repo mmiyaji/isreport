@@ -1,0 +1,11 @@
+<form enctype="multipart/form-data" action='/isreport/upload_img' method='POST'>
+<p>Image File：<input type='file' name='file'></p>
+				<input type='hidden' name='id' value="{{entry.id}}">
+				<input type='submit' name='submit' value="アップロード">
+{% csrf_token %}</form>
+{% for file in file_list %}
+{% ifequal file '.svn' %}
+{% else %}
+<img src="{{image_url}}{{file}}" alt="thumbnail" width="150"></img><p class="imges">{{file}}</p>
+{% endifequal %}
+{% endfor %}

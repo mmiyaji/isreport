@@ -1,0 +1,14 @@
+<div class="marg15" id="book_entry">
+	<span id="images_preview"><img id="num_prev" alt="numeric" src="http://chart.apis.google.com/chart?cht=tx&amp;chs=1x0&amp;chl=a%2Bb"/></span>
+	<img src="{{MEDIA_URL}}/img/loading.gif" alt="loading" id="loading" style="display: none"/>
+		<p><input type='text' name='numeric' id="numeric" onKeyup="setNumeric()" value="a+b"></p>
+		<input type='submit' name='submit' value="作成" onClick='post_numeric("{{entry.id}}")'>
+	{% if file %}
+	<div class="img_div">
+		<a href="{{image_url}}{{file}}" target="_blank"><img src="{{image_url}}{{file}}" alt="thumbnail" width="95%"></img></a><p class="imges">{{file}}　<p><input type="submit" value="図貼り付け" onClick='paste_image("{{file}}","{{forloop.counter}}")'><input type="submit" value="式貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","")'><input type="submit" value="文中貼り付け" onClick='paste_nume("{{file}}","{{forloop.counter}}","True")'><!-- <input type="submit" value="削除" onClick='delete_img("{{file}}","{{entry.id}}")'> --></p></p>
+	</div>
+	{% endif %}
+	<input type="submit" value="画像ファイルアップロード" onClick="setfunc('image')">
+	<input type="submit" value="イメージ一覧表示" onClick="show_img({{entry.id}})">
+	<input type="submit" value="キャンセル" onClick="hide_curtain()">
+</div>

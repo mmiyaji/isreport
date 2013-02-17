@@ -1,0 +1,133 @@
+/*
+report
+*/
+.report_content{
+	border-top:1px solid #CCC;
+	margin-bottom:50px;
+}
+.report_content h2,.report_content h3,.report_content h4,.report_content h5{
+	margin-top:30px;
+	font-size:120%;
+	font-weight:bold;
+	color:navy;
+}
+.report_content h5{
+	margin:20px 3px 3px 3px;
+	padding:3px;
+	letter-spacing:1px;
+}
+.report_content blockquote{
+	background: url(http://is.doshisha.ac.jp/isapps/static/img/blockquote.png) no-repeat 0 0;
+	padding: 10px 30px;
+	border-top: 1px solid #CCC;
+	border-bottom: 1px solid #CCC;
+	color: #888;
+}
+.report_content div.centers,.report_content div.img_div{
+	text-align:center;
+	float:center;
+}
+.report_content div.img_div table,.report_content div.img_div table th,.report_content div.img_div table td{
+	border:none;
+}
+.report_content div.figs{
+	margin:0 auto 20px auto;
+}
+.report_content div.tbs{
+	margin:20px auto 0 auto;
+}
+.report_content img{
+	margin:20px auto 5px auto;
+}
+.report_content img.inner_nume{
+	margin:auto;
+	height:15px;
+	bottom:0;
+}
+.report_content table{
+	margin:5px auto 20px auto;
+    min-width: 30%;
+    border: 1px #E3E3E3 solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.report_content table th {
+    padding: 5px;
+    border: #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    background: #F5F5F5;
+    font-weight: bold;
+    line-height: 120%;
+    text-align: center;
+}
+.report_content table td {
+    padding: 5px;
+    border: 1px #E3E3E3 solid;
+    border-width: 0 0 1px 1px;
+    text-align: center;
+}
+.report_content table.tables{
+    border: 1px gray solid;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.report_content table.tables th {
+    border: gray solid;
+    border-width: 0 0 1px 1px;
+    background: #ccc;
+}
+.report_content table.tables td {
+    border: 1px gray solid;
+    border-width: 0 0 1px 1px;
+}
+.report_content div.figure {
+	margin: 10px  0px 20px  0px;
+	padding: 0px;
+	text-align:center;
+}
+.report_content div.caption {
+	margin: 10px 0px 10px 0px;
+	padding: 0px;
+	text-align:center;
+	clear:both;
+}
+.report_content div.subfigure {
+	margin: 10px  0px  0px 10px;
+	padding: 0px;
+	float:left;
+}
+.report_content div.subcaption {
+	margin: 5px;
+	padding:0px;
+	text-align:center;
+}
+.report_content .section{
+	margin-top:20px;
+}
+.report_content ol > ol,.report_content ul > ul{
+	margin-left:25px;
+}
+.report_content ol li{
+	list-style-type:decimal;
+	margin:5px 30px;
+}
+.report_content ul li{
+	list-style-type:disc;
+	margin:5px 30px;
+}
+.report_content ul#reference_list,.report_content ul#reference_list li{
+	margin:0;
+	list-style-type:none;
+}
+.report_content .block{
+	padding:10px 20px;
+	margin:20px;
+	border:1px solid navy;
+}
+.report_content a.keywd{
+	font-size:110%;
+	text-decoration:underline;
+}
+.report_content a.keywd:hover{
+	color:#77d;
+}

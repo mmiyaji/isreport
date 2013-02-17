@@ -1,0 +1,11 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>著者紹介（在籍年度別）</h2>
+	<div class="marg15">
+		{% for auths in items %}{% if auths.authors %}{% include "isbookshelf/component/author_roll.html" %}{% endif %}{% endfor %}
+		{# {% for item in new_items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %} #}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>
+{% endblock main %}

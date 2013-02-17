@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://www.idpf.org/2007/opf"
+				 unique-identifier="BookId">
+ <metadata xmlns:dc="http://purl.org/dc/elements/1.1/"
+					 xmlns:opf="http://www.idpf.org/2007/opf">
+	<dc:title>{{title}}</dc:title> 
+	<dc:creator opf:role="aut">{{creater}}</dc:creator>
+	<dc:language>ja</dc:language> 
+	<dc:rights>Public Domain</dc:rights> 
+	<dc:publisher>{{publisher}}</dc:publisher> 
+	<dc:identifier id="BookId">{{bookid}}</dc:identifier>
+ </metadata>
+ <manifest>
+	<item id="toc" href="toc.ncx" media-type="application/x-dtbncx+xml" />
+	<item id="style" href="css/stylesheet.css" media-type="text/css" />
+	<item id="isbooks_cover" href="images/isbooks_cover.png" media-type="image/png" />
+	<item id="titlepage" href="title_page.xhtml" media-type="application/xhtml+xml"/>
+	<item id="agenda" href="agenda.xhtml" media-type="application/xhtml+xml" />
+	{% for item in list %}
+	<item id="{{item.id}}" href="{{item.ref}}" media-type="application/xhtml+xml" />
+	{% endfor %}
+	<item id="imgl" href="images/koma.gif" media-type="image/gif" /><!-- replaced -->
+ </manifest>
+ <spine toc="ncx">
+	<itemref idref="titlepage" />
+	<itemref idref="agenda" />
+	{% for item in list %}
+	<itemref idref="{{item.id}}" />
+	{% endfor %}
+ </spine>
+</package>

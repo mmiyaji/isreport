@@ -1,0 +1,9 @@
+<ul>
+{% for recom_item in recom_items %}
+<li><a href="/isreport/entry/{{recom_item.id}}">{{recom_item.title}}</a></li>{% endfor %}
+</ul>
+{# <ul> #}
+{# {% for recom_e in item.get_recommend_entry %} #}
+{# 	<li><a href="/isreport/entry/{{recom_e.id}}">{{recom_e.title}}</a></li> #}
+{# {% endfor %} #}
+{# </ul> #}

@@ -1,0 +1,166 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="DJ6X5poRBCu8BbvpDMrhcz9I03fcZBk9YlAKxsGfbXg" />
+	<title>{% if base_title %}{{base_title}} - {% endif %}IS Report System</title>
+	<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico" type="image/x-icon" />
+	<meta name="keywords" content="{% if item.tags %}{% for tag in item.tags %}{{tag.name}}{% if not forloop.last %}，{% endif %}{% endfor %}{%else%}光トポグラフィ，医用画像，医療空間，クラスタリング，多目的最適化，シミュレーテッドアニーリング，遺伝的アルゴリズム，知的照明，並列分散処理，ソーシャルウェアアプリケーション{% endif %}" />
+	<meta name="description" content="{%if description%}{{description}}: {%endif%}本サイトは「同志社大学生命医科学部医情報学科 医療情報システム研究室」及び「同志社大学工学部インテリジェント工学科 知的システムデザイン研究室」の所有する研究報告であるISレポートの管理システムです．本サイトに関する お問い合わせはISグループシステム担当&lt;report@is.doshisha.ac.jp&gt; まで．" />
+	<meta property="og:title" content="IS Report System" />
+	<meta property="og:type" content="product" />
+	<meta property="og:image" content="https://fbcdn-photos-a.akamaihd.net/photos-ak-snc1/v43/177/209781025755513/app_1_209781025755513_428.gif" />
+	<meta property="og:site_name" content="IS Report System" />
+	<meta property="fb:admins" content="100000801471959" />
+	<meta property="fb:app_id" content="209781025755513" />
+	<link rel="start" href="/isreport/" title="IS Report System" />
+	<link rel="help" href="/isreport/help" title="ヘルプ" />{% if pages.pre_page %}
+	<link rel="prev" href="/isreport/{%if target_url%}{{target_url}}?{%else%}category?target={{target}}{%endif%}{%if para%}{{para|iriencode}}{%endif%}{%if year%}&amp;year={{year}}{%endif%}&amp;page={{pages.pre_page}}" title="次の記事" /> {%endif%}{% if pages.next_page %}
+	<link rel="next" href="/isreport/{%if target_url%}{{target_url}}?{%else%}category?target={{target}}{%endif%}{%if para%}{{para|iriencode}}{%endif%}{%if year%}&amp;year={{year}}{%endif%}&amp;page={{pages.next_page}}" title="次の記事" />{%endif%}
+	<link rel="alternate" type="application/rss+xml" title="RSS" href="http://is.doshisha.ac.jp/isreport/rss">
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/base.css?v=0.43"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/utils.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/dlist.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/form.css?v=0.3"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/report.css?v=0.34"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/editor.css?v=0.34"/>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/text-hatena0-2verIS.js?v=0.350"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/isreport.js?v=0.35" ></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}js/editor.js?v=0.35" ></script>
+	{% if code %}
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/syntax/shCore.css"/>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/syntax/shCoreDefault.css"/>
+	{% endif %}
+	{% if math %}
+	<script type="text/javascript" src="{{ STATIC_URL }}js/jquery.exfitframe.0.1.4.js"></script>
+	<script type="text/x-mathjax-config">
+		MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$']] } });
+	</script>
+	<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>{% endif %}
+	<!--[if IE ]>
+	<link type="text/css" rel="stylesheet" href="{{ STATIC_URL }}css/modern.css?v=0.3"/>
+	<![endif]-->
+	<script type="text/javascript">
+	<!--
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-9609071-3']);
+	  _gaq.push(['_trackPageview']);
+	  (function() {
+	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+	//-->
+	</script>
+</head>
+<body>
+<div id="wrapper">
+<div id="header" class="navit">
+	<nav>
+	<ul id="operation" class="high_right">
+		<li class="utility_home"><a href="/isreport">Home</a></li>
+		<li><a href="/isreport/search/">Search</a></li>
+		<li><a href="/isreport/link">Link</a></li>
+		<li><a href="/isreport/help">Help</a></li>
+		<li><a href="/isreport/renew">News</a></li>
+		<li><a href="/isreport/contact">Contact</a></li>
+		<li><a href="/isreport/rss">RSS</a></li>
+		<li>{% if user.is_anonymous %}<a href="/isreport/login">Login</a>{% else %}<a href="/isreport/logout">Logout【{{user}}】</a>{% endif %}</li>
+	</ul>
+	</nav>
+	<h1><a href="/isreport"><img src="{{ STATIC_URL }}img/isreport_logo.png" alt="IS Report System Logo" /></a></h1>
+	<p id="site_description">研究レポート公開システム</p>
+	<div id="topic_path">
+		<ol>
+			{{navi|safe}}
+		</ol>
+		<div id="social_button">
+			<div id="rss-root">
+				<a href="/isreport/rss">
+					<img src="{{STATIC_URL}}img/rss_mini.png" height="23" alt="RSS Feed" />
+				</a>
+			</div>
+			<div id="tw-root" style="width:95px;"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+			<div id="gl-root" style="width:60px;"><!-- Place this tag in your head or just before your close body tag -->
+			<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+			<!-- Place this tag where you want the +1 button to render -->
+			<g:plusone size="medium"></g:plusone></div>
+			{# <div id="dl-root"> #}
+			{# 	<a href="http://www.delicious.com/save" onclick="window.open('http://www.delicious.com/save?v=5&noui&jump=close&url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent(document.title), 'delicious','toolbar=no,width=550,height=550'); return false;"> #}
+			{# 		<img src="http://l.yimg.com/hr/img/delicious.small.gif" height="20" alt="Delicious" /> #}
+			{# 	</a> #}
+			{# </div> #}
+			<div id="hb-root"><a id="hb_like" href="http://b.hatena.ne.jp/entry/http://is.doshisha.ac.jp/isreport/" class="hatena-bookmark-button" data-hatena-bookmark-layout="standard" title="このエントリーをはてなブックマークに追加"><img src="http://b.st-hatena.com/images/entry-button/button-only.gif" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script><script type="text/javascript">document.getElementById("hb_like").href="http://b.hatena.ne.jp/entry/http://is.doshisha.ac.jp"+location.pathname</script></div>
+			<div id="fb-root">
+				<fb:like id="fb_script" href="" send="true" layout="button_count" width="100" show_faces="false" font=""></fb:like>
+				<script src="http://connect.facebook.net/en_US/all.js#appId=209781025755513&amp;xfbml=1"></script>
+				<script type="text/javascript">document.getElementById("fb_script").href="http://is.doshisha.ac.jp"+location.pathname;</script>
+			</div>
+		</div>
+	</div>
+<!-- / #header --></div>
+<div id="main">
+<div class="inner">
+{% block main %}
+{% endblock main %}
+<!-- / .inner --></div>
+<!-- / #main --></div>
+<div id="sub">
+{% include "isbookshelf/base/sidebar.html" %}
+<!-- / #sub --></div>
+<div id="footer" class="navit">
+<ul>
+	<li class="utility_home"><a href="/isreport">Home</a></li>
+	<li><a href="/isreport/search/">Search</a></li>
+	<li><a href="/isreport/link">Link</a></li>
+	<li><a href="/isreport/help">Help</a></li>
+	<li><a href="/isreport/renew">News</a></li>
+	<li><a href="/isreport/contact">Contact</a></li>
+	<li><a href="/isreport/rss">RSS</a></li>
+	<li>{% if user.is_anonymous %}<a href="/isreport/login">Login</a>{% else %}<a href="/isreport/logout">Logout【{{user}}】</a>{% endif %}</li>
+</ul>
+<pre id="copyright">Copyright &copy; <span class="copy_date">2002-{% now "Y" %}</span> <a target="_blank" href="http://is.doshisha.ac.jp/">MISL</a>, All rights reserved.
+No part of this document may be reproduced, copied, distributed,transferred, modified, or transmitted,
+in any form or by any means,without the prior written permission of the authors.
+In no event shall the authors be liable for any damages caused in any way out of the use of this document．
+</pre>
+<!-- / #footer --></div>
+<!-- / .wrapper --></div>
+{# <script type="text/javascript"> #}
+{# <!-- #}
+{# $.getJSON("{{ STATIC_URL }}json/rank10.json", function(data){ #}
+{# 		var rank_entries = data.entries; #}
+{# 		for(var i in rank_entries){ #}
+{# 			$("#copyright").append("<li><strong>" + rank_entries[i].id + "</strong></li>"); #}
+{# 			$("#copyright").append("<li>" + rank_entries[i].url +"</li>"); #}
+{# 		} #}
+{# 	}); #}
+{# //--> #}
+{# </script> #}
+{% if code %}<script type="text/javascript" src="{{ STATIC_URL }}js/syntax/shCore.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/syntax/shBrushXml.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}js/syntax/shAutoloader.js"></script>
+<script type="text/javascript">
+<!--
+SyntaxHighlighter.autoloader(
+	"actionscript3 as3 {{ STATIC_URL }}js/syntax/shBrushAS3.js",
+	"bash shell {{ STATIC_URL }}js/syntax/shBrushBash.js",
+	"cpp c {{ STATIC_URL }}js/syntax/shBrushCpp.js",
+	"c# c-sharp csharp {{ STATIC_URL }}js/syntax/shBrushCSharp.js",
+	"css {{ STATIC_URL }}js/syntax/shBrushCss.js",
+	"java {{ STATIC_URL }}js/syntax/shBrushJava.js",
+	'js jscript javascript {{ STATIC_URL }}js/syntax/shBrushJScript.js',
+	"perl pl {{ STATIC_URL }}js/syntax/shBrushPerl.js",
+	'php {{ STATIC_URL }}js/syntax/shBrushPhp.js',
+	'py python {{ STATIC_URL }}js/syntax/shBrushPython.js',
+	"ruby rails ror rb {{ STATIC_URL }}js/syntax/shBrushRuby.js",
+	"sql {{ STATIC_URL }}js/syntax/shBrushSql.js",
+	"text plain {{ STATIC_URL }}js/syntax/shBrushPlain.js",
+	"xml xhtml xslt html {{ STATIC_URL }}js/syntax/shBrushXml.js"
+);
+SyntaxHighlighter.all();
+//-->
+</script>{% endif %}
+</body>
+</html>

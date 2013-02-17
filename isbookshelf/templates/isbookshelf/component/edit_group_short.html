@@ -1,0 +1,13 @@
+	{% if createError %}
+	<p class="error">{{createError}}</p>
+	{% endif %}
+	{% if group.id %}
+	<dt>ID</dt>
+	<dd>{{group.id}}</dd>
+	{% endif %}
+	<dt>グループ名</dt>
+	<dd><input type="text" name="name" value="{{group.name}}"/></dd>
+	<dt>アイコンURL</dt>
+	<dd><input type="text" name="img_url" value='{{group.img_url|default:"http://"}}'/></dd>
+	<dt>グループ紹介</dt>
+	<dd><span class="red">*入力がそのまま出力されます．(preタグ)</span><textarea name="personal" class="flexarea">{{group.personal}}</textarea></dd>

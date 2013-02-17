@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="css/agenda_style.css" />
+<title>Table of Contents</title>
+</head>
+<body>
+<div id="wrapper">
+	<div id="content">
+		<h3 class="agenda">Title of Contents</h3>
+		{% for item in list %}
+		<div class="entry">
+			<ul>
+				<li>
+					<h4 class="title"><a href="{{item.ref}}">{{item.title}}</a></h4>
+					<h5 class="author">{% for au in item.entry.authors %}{{au}}{% if not forloop.last %}，{% endif %}{% endfor %}</h5>
+				</li>
+				<!-- <li>
+					<a href="{{item.ref}}">References</a>
+				</li> -->
+			</ul>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+</body>
+</html>

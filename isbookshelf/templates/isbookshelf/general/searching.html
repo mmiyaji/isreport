@@ -1,0 +1,49 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>レポート検索 {%if added%}<span class="red">下記の{{pages.max}}件にタグを付加しました</span>{%endif%}</h2>
+	<div class="marg15">
+		<form action='/isreport/search' method='GET'>
+			<span class="red">スペース区切りでAND検索</span>
+			<dl class="list">
+				<dt>レポートタイトル</dt>
+				<dd><input type="text" name="stitle" value="{{stitle}}"/></dd>
+				<dt>著者氏名</dt>
+				<dd><input type="text" name="sauthor" value="{{sauthor}}"/></dd>
+				<dt>アブストラクト</dt>
+				<dd><input type="text" name="sabst" value="{{sabst}}"/></dd>
+				<dd><input type="submit" value="検索"/></dd>
+			</dl>
+		{% csrf_token %}</form>
+	</div>
+</div>
+{% if items %}
+<div class="content_section">
+	<h2>レポート検索結果　{%if pages%}全{{pages.max}}件{%endif%}</h2>
+	<div class="marg15">
+		<h3>{{search_description}}</h3>
+		<div>{% include "isbookshelf/component/min_pager.html" %}</div>
+		{% for item in items %}{% include "isbookshelf/component/content_short.html" %}{% endfor %}
+	</div>
+	{% include "isbookshelf/component/target_pager.html" %}
+</div>	
+{% endif %}
+{% if user.is_staff %}<div class="content_section admin_only">
+	<h2>管理者 / 検索結果すべてに特定タグをつける <span class="red">やり直し用のスクリプトを用意しておりません．慎重に実行して下さい</span></h2>
+	<div class="marg15">
+		<form action='/isreport/search' method='POST'>
+			<dl class="list">
+				<dt><span class="red">付加するタグ</span></dt>
+				<dd><input type="text" name="stag" value="{{stag}}"/></dd>
+				<dt>レポートタイトル</dt>
+				<dd><input type="text" name="stitle" value="{{stitle}}"/></dd>
+				<dt>著者氏名</dt>
+				<dd><input type="text" name="sauthor" value="{{sauthor}}"/></dd>
+				<dt>アブストラクト</dt>
+				<dd><input type="text" name="sabst" value="{{sabst}}"/></dd>
+				<dd><input type="submit" value="スクリプト実行"/></dd>
+			</dl>
+		{% csrf_token %}</form>
+	</div>
+</div>{%endif%}
+{% endblock main %}

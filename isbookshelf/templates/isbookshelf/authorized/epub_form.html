@@ -1,0 +1,46 @@
+{% extends "isbookshelf/base/base.html" %}
+{% block main %}
+<div class="content_section">
+	<h2>ダウンロード</h2>
+	<div class="marg15">
+	{# <h3>Books</h3> #}
+		{# <div class="marg15"> #}
+			<form id="form" name="form" method="post" action="/isreport/epub">
+				{% if loginError %}
+				<p class="red">{{loginError}}</p>
+				{% endif %}
+				<dl class="list">
+					<dt>Books</dt>
+					<dd>
+						<select id="select_book" name="" onChange="book_change()">
+							<option value="0">My Favorite</option>
+							{% for book in appuser.get_books %}
+								<option value="{{book.id}}" {%ifequal selecter.id book.id%}selected="selected"{%endifequal%}>{{book.title}}</option>
+							{% endfor %}
+						</select>
+					</dd>
+					<dt>Title</dt>
+					<dd><input type="text" name="e_title" value="{% if selecter %}{{selecter.title}}{% else %}{{appuser.nickname}}'s Favorite ISDL Reports{% endif %}"></dd>
+					<dt>Author</dt>
+					<dd><input type="text" name="e_author" value="{{ appuser.nickname }}"></dd>
+					<dt id="report_content">Contents</dt>
+						{% if fav_items.get_entries %}{% for item in fav_items.get_entries %}
+						<dd id="item_list_{{forloop.counter}}">
+						{% if item.istext %}<input type="checkbox" name="items" class="" onChange="item_change(this)" value="{{item.id}}" checked/>{% else %}×　{% endif %}
+						<span class="item_title">{{item.title}}</span><br />
+						{% for group in item.groups %}【<a href="/isreport/group/{{group.name|iriencode}}" class="report_tag">{{group.name}}</a>】{% endfor %}
+						{% for tag in item.tags %}<a href="/isreport/tag/{{tag.name|iriencode}}" class="report_tag">{{tag.name}}</a>{% if not forloop.last %}，{%else%}<br />{% endif %}{% endfor %}
+						{% for author in item.authors %}<a href="/isreport/author/{{author.name|iriencode}}" class="a_author">{{author.name}}</a>{% if not forloop.last %}， {% endif %}{% endfor %}
+						</dd>
+						{% endfor %}
+						{% else %}
+						<dd>No Entry</dd>
+						{% endif %}
+					<dt><input type="hidden" name="bookid" value="{{selecter.id}}"/></dt>
+					<dd><input type="submit" id="set_subs" value="作成する"/></dd>
+				</dl>
+                {% csrf_token %}
+			</form>
+	</div>
+</div>
+{% endblock main %}
