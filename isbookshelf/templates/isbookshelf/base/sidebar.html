@@ -71,6 +71,8 @@
   </ul>
 </div>{% endif %}
 <div class="content_section">
+  {% load archives %}
+  {% archives %}
   <h3>記事アーカイブ</h3>
   <ul>
     <li {%ifequal target "year"%}{%ifequal year "2012"%}class="sel_side"{%endifequal%}{%endifequal%}><h4><a href="/isreport/year/2012">2012年度 IS Report</a></h4></li>

@@ -64,7 +64,7 @@ img#ajax_load{
 	margin:3px auto;
 	width:14px;
 	height:14px;
-	background-image:url("/isapps/static/img/editor/utils.gif");
+	background-image:url("/static/img/editor/utils.gif");
 	background-repeat: no-repeat;
 	display:block;
 }
@@ -133,23 +133,23 @@ img#ajax_load{
 }
 .editor_utility ul li .edit_block{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/code.png");
+	background-image:url("/static/img/editor/code.png");
 }
 .editor_utility ul li .edit_link{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/links.png");
+	background-image:url("/static/img/editor/links.png");
 }
 .editor_utility ul li .edit_h1{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/h1.png");
+	background-image:url("/static/img/editor/h1.png");
 }
 .editor_utility ul li .edit_h2{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/h2.png");
+	background-image:url("/static/img/editor/h2.png");
 }
 .editor_utility ul li .edit_h3{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/h3.png");
+	background-image:url("/static/img/editor/h3.png");
 }
 .editor_utility ul li .edit_hr{
 	background-position:-445px 0px;
@@ -163,19 +163,19 @@ img#ajax_load{
 .editor_utility ul li .edit_code{
 	background-position:0px 0px;
 	height:18px;
-	background-image:url("/isapps/static/img/editor/code.png");
+	background-image:url("/static/img/editor/code.png");
 }
 .editor_utility ul li .edit_pre{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/pre.png");
+	background-image:url("/static/img/editor/pre.png");
 }
 .editor_utility ul li .edit_math{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/math.png");
+	background-image:url("/static/img/editor/math.png");
 }
 .editor_utility ul li .edit_save{
 	background-position:0px 0px;
-	background-image:url("/isapps/static/img/editor/saves.png");
+	background-image:url("/static/img/editor/saves.png");
 }
 
 .curtain{

@@ -25,11 +25,13 @@
 	<dt>キーワード</dt>
 	<dd>
 		{% for tag in item.tags %}<a href="/isreport/tag/{{tag.name|iriencode}}" class="report_tag">{{tag.name}}</a>{% if not forloop.last %}，{% endif %}{% endfor %}
-	</dd>{% endif %}{% if item.wordss %}
-	<dt>関連ワード</dt>
-	<dd>
-		{% for word in item.get_recommend_word %}<a href="/isreport/keyword/{{word.word.name|iriencode}}" class="report_tag">{{word.word.name}}{% if user.is_staff %}[tf:{{word.tf}}, idf:{{word.idf}}]{%endif%}</a>{% if not forloop.last %}，{% endif %}{% endfor %}
-	</dd>{% endif %}{% if item.abstract %}
+	</dd>{% endif %}
+    {# {% if item.wordss %} #}
+	{# <dt>関連ワード</dt> #}
+	{# <dd> #}
+	{# 	{% for word in item.get_recommend_word %}<a href="/isreport/keyword/{{word.word.name|iriencode}}" class="report_tag">{{word.word.name}}{% if user.is_staff %}[tf:{{word.tf}}, idf:{{word.idf}}]{%endif%}</a>{% if not forloop.last %}，{% endif %}{% endfor %} #}
+	{# </dd>{% endif %} #}
+    {% if item.abstract %}
 	<dt>アブストラクト</dt>
 	<dd>{{item.abstract}}</dd>{% endif %}
 </dl>

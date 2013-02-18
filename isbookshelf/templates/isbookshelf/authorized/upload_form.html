@@ -48,14 +48,14 @@
 						<li>
 						<select name="authors" id="authors_{{entry.id}}">
 							{% for author in authors %}
-							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}}　：　{% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
+							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}} ： {% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
 						</select><a href="javascript:void(0)" onclick="delete_author(this)">×</a></li>{% if forloop.last %}<a href="javascript:void(0)" id="add_author" onclick="select_author()">著者を追加する</a>{% endif %}
 						{% endfor %}
 						{% else %}
 						<li>
 						<select name="authors" id="authors_{{entry.id}}">
 							{% for author in authors %}
-							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}}　：　{% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
+							<option id="auth_{{author.id}}" title="{{author.name}}" value="{{author.id}}" {% ifequal appuser.get_auth.id author.id %}selected="selected"{% endifequal %}>{{author.name}} ： {% ifequal author.yearth 0 %}教員{% else %}{% ifequal author.rank "prof" %}教員{% else %}{{author.yearth}}期生{% endifequal %}{% endifequal %}</option>{% endfor %}
 						</select><a href="javascript:void(0)" onclick="delete_author(this)">×</a></li><a href="javascript:void(0)" id="add_author" onclick="select_author()">著者を追加する</a>
 						{% endif %}
 						</ol>
@@ -74,10 +74,9 @@
 						<input type="text" name="tags" id="entry_tags" value="{% for tag in entry.tags %}{{tag.name}},{% endfor %}" /></dd>
 					<dd><select name="tag_list" multiple="" size="5" id="tags_{{entry.id}}" onChange="tags_change(this)">
 						{% for tag in tags %}
-						{% ifequal tag.count_me 0 %}
-						{% else %}
+						{# {% ifnotequal tag.count_me 0 %} #}
 						<option id="tag_{{tag.id}}" title="{{tag.name}}" value="{{tag.id}}" {% for ta in entry.tags %}{% ifequal tag.id ta.id %}selected="selected"{% endifequal %}{% endfor %}>{{tag.name}}</option>
-						{% endifequal %}
+						{# {% endifequal %} #}
 						{% endfor %}
 						</select>
 					</dd>

@@ -290,7 +290,7 @@ class Author(models.Model):
 class Group(models.Model):
     name = models.CharField(max_length=255)
     roman = models.CharField(max_length=255, blank=True, null=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True, db_index=True)
     update_at = models.DateTimeField(auto_now=True)
     personal = models.TextField(max_length = 1000, blank=True, null=True)
     img_url = models.CharField(max_length = 255, blank=True, null=True)
@@ -337,7 +337,7 @@ class Group(models.Model):
 class Tag(models.Model):
     name = models.CharField(max_length=255)
     roman = models.CharField(max_length=255, blank=True, null=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True, db_index=True)
     update_at = models.DateTimeField(auto_now=True)
     isvalid = models.BooleanField(default=True)
     create_by = models.ForeignKey(ApplicationUser)
@@ -800,7 +800,7 @@ class Entry(models.Model):
 
 class BookHandler(models.Model):
     entries = models.ManyToManyField(Entry, blank=True, null=True, db_index=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True, db_index=True)
     update_at = models.DateTimeField(auto_now=True)
     create_by = models.ForeignKey(ApplicationUser)
     book = models.ForeignKey(Book)
@@ -835,7 +835,7 @@ class BookHandler(models.Model):
 
 class FavoriteHandler(models.Model):
     entries = models.ManyToManyField(Entry, blank=True, null=True, db_index=True)
-    create_at = models.DateTimeField(auto_now_add=True)
+    create_at = models.DateTimeField(auto_now_add=True, db_index=True)
     update_at = models.DateTimeField(auto_now=True)
     create_by = models.ForeignKey(ApplicationUser)
     isvalid = models.BooleanField(default=True)
